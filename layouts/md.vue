@@ -24,15 +24,8 @@ import Translate from '../components/page/handle/translate/translate.vue';
 </template>
 
 <script>
-const a = true
-if (a) {
-    import("@/giaodien/modes/dark.scss")
+// import("@/giaodien/modes/dark.scss")
 
-}
-else {
-    import("@/giaodien/modes/simple.scss")
-
-}
 
 export default {
     data() {
@@ -45,7 +38,7 @@ export default {
         console.log(this.classTest);
     },
 
-    computed(){
+    computed() {
         return {
             class: gen
         }
