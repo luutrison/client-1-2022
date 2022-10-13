@@ -1,0 +1,48 @@
+@mixin ComponentMode($config, $color) {
+  $name: map-get($config, name);
+  .#{$name}-item-mntb {
+    & button {
+      outline: none;
+      border: none;
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      gap: 15px;
+      align-items: center;
+      font-size: 16px;
+      position: relative;
+      height: 100%;
+      background: map-get($color, background);
+      cursor: pointer;
+      &.active {
+        color: map-get($color, mainColor);
+        &::before {
+          content: "";
+          width: 100%;
+          height: 3px;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          background-color: map-get($color, mainColor);
+        }
+      }
+      &:hover {
+        color: map-get($color, mainColor);
+      }
+      &:active,
+      &:focus {
+        position: relative;
+      }
+    }
+    & svg {
+      font-size: 30px;
+    }
+    font-size: 20px;
+  }
+  .#{$name}-icon-mntb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+}

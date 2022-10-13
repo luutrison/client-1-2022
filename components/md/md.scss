@@ -1,0 +1,14 @@
+@use "./topBar/topBar.scss" as TopBar;
+@use "./menuLeft/menuLeft.scss" as MenuLeft;
+
+@mixin ComponentMode($config, $color){
+    $name: map-get($config, name);
+    @include TopBar.ComponentMode($config, $color);
+    @include MenuLeft.ComponentMode($config, $color);
+}
+
+@mixin ComponentSimple($config, $color){
+    $name: map-get($config, name);
+    
+}
+

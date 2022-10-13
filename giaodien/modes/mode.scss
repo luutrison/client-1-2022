@@ -1,0 +1,27 @@
+@use "../../components/components.scss" as MyComponent;
+@use "../components/md.scss" as MdComponent;
+@use "../components/md-simple.scss" as MdComponentTotal;
+
+$config: (
+    name: son,
+    topBarHeight: 60px,
+    contentPadding: 20px,
+    layer: 2022,
+    borderRadius: 10px,
+    contentWidth: 688px,
+);
+
+@mixin ModePlate($color) {
+    $name: map-get($config, name);
+    .#{$name}-mode{
+        background: map-get($color, background);
+        color: map-get($color, color);
+    }
+
+    @include MyComponent.ComponentMode($config, $color);
+    @include MdComponent.ComponentMode($config, $color);
+}
+
+@mixin ModeTotal($color) {
+    @include MdComponentTotal.ComponentSimple($config, $color);
+}

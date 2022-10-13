@@ -1,0 +1,16 @@
+@use "/components/components.scss" as Components;
+
+@mixin ComponentSimple($config, $color) {
+  $name: map-get($config, name);
+
+  .#{$name}-main {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    left: 0;
+    top: 0;
+  }
+
+  @include Components.ComponentSimple($config, $color)
+  
+}

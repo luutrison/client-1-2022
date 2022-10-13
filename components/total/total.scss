@@ -1,0 +1,6 @@
+@use "./scss/ui.scss" as Uis;
+
+@mixin ComponentSimple($config, $color){
+    $name: map-get($config, name);
+    @include Uis.ComponentSimple($config, $color)
+}

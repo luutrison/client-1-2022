@@ -1,0 +1,15 @@
+@use "./md/md.scss" as Md;
+@use "./page/page.scss" as Page;
+@use "./total/total.scss" as Total;
+
+@mixin ComponentMode($config, $color){
+    $name: map-get($config, name);
+    @include Md.ComponentMode($config, $color)
+}
+
+@mixin ComponentSimple($config, $color){
+    $name: map-get($config, name);
+    @include Md.ComponentSimple($config, $color);
+    @include Page.ComponentSimple($config, $color);
+    @include Total.ComponentSimple($config, $color);
+}

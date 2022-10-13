@@ -1,0 +1,25 @@
+@mixin ComponentSimple($config, $color) {
+  $name: map-get($config, name);
+
+  .#{$name}-notifier {
+    border-radius: map-get($config, borderRadius);
+  }
+  .#{$name}-notifier-error {
+    outline: solid 2px rgb(170, 18, 18);
+    & svg {
+      color: rgb(170, 18, 18);
+    }
+  }
+  .#{$name}-notifier-success {
+    outline: solid 2px rgb(9, 135, 68);
+    & svg {
+      color: rgb(9, 135, 68);
+    }
+  }
+  .#{$name}-notifier-warning {
+    outline: solid 2px rgb(214, 150, 0);
+    & svg {
+      color: rgb(214, 150, 0);
+    }
+  }
+}
