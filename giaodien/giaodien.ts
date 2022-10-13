@@ -8,15 +8,15 @@ const _giaodien = {
     simple: {
       name: "mode-simple",
       icon: "icon",
-      change: () => {
-        return import("../giaodien/modes/simple.scss");
+      change: async () => {
+        // import("../giaodien/modes/simple.scss");
       },
     },
     dark: {
       name: "mode-dark",
       icon: "icon",
-      change: () => {
-        return import("../giaodien/modes/dark.scss");
+      change: async () => {
+        // import("../giaodien/modes/dark.scss");
       },
     },
   },
@@ -29,11 +29,9 @@ const _cname = (arr) => {
       arrOut.push(_config.name + "-" + name);
     });
     return arrOut;
+  } else {
+    return _config.name + "-" + arr;
   }
-  else{
-    return _config.name + "-" + arr
-  }
-
 };
 
 const _loadMode = () => {
@@ -42,11 +40,11 @@ const _loadMode = () => {
   const allowedMode = Object.keys(_giaodien.modes);
   if (allowedMode.find((x) => x === currentMode)) {
     _giaodien.modes[currentMode]?.change();
-    return _giaodien.modes[currentMode].name
+    return _giaodien.modes[currentMode].name;
   } else {
     _giaodien.modes[_giaodien.md]?.change();
     localStorage.setItem(key, _giaodien.md);
-    return _giaodien.modes[_giaodien.md].name
+    return _giaodien.modes[_giaodien.md].name;
   }
 };
 

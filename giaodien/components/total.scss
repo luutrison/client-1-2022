@@ -1,0 +1,3 @@
+@use "../modes/mode.scss" as Mode;
+
+@include Mode.ComponentSimple($config, $color)

@@ -15,4 +15,3 @@ $color: map-merge(
   @include Mode.ModePlate($color);
 }
 
-@include Mode.ModeTotal($color);
