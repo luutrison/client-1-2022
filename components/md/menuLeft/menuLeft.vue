@@ -9,10 +9,8 @@ import { _cname } from '~~/giaodien/giaodien';
 
 export default {
     data() {
-        const style = this.$style
-
         return {
-            _c: _cname(style)
+            _c: _cname(this.$style)
         }
     }
 }

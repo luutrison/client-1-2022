@@ -39,13 +39,11 @@ export default {
 
     data() {
 
-        const style = this.$style
-
         return {
             // topbarStore,
             currentActive: 0,
             dataout: this.items,
-            _c: _cname(style)
+            _c: _cname(this.$style)
         }
     },
 
