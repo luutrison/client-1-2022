@@ -6,9 +6,8 @@
 <script>
 import {langConfig} from '@/module/underscore/translate/translate'
 export default {
-    async setup(){
-       const lang = await langConfig.init()
-       console.log(lang, "init");
+    setup(){
+        langConfig.init()
     },
     data(){
         return {

@@ -2,20 +2,14 @@ import { notification } from "ant-design-vue";
 import _api_v1 from "~~/api/v1/api";
 import _notifier from "@/components/page/ui/notifier/notifier";
 import axios from "axios";
-
+import { error } from "console";
 
 const configLang = {
-  "vi": {
+  vi: {
     local: "VN",
-    path: "/translate/vi-VN.json"
-  }
-}
-
-
-
-
-
-
+    path: "/translate/vi-VN.json",
+  },
+};
 
 //Kiem tra ngon ngu co the duoc ho tro va su dung
 const checkLang = (lang, languageSupport) => {
@@ -29,7 +23,7 @@ const checkLang = (lang, languageSupport) => {
     const checkLangItem = (item: string) => {
       const itemParse = item.toLowerCase();
       var langCheck = "",
-      localCheck = "";
+        localCheck = "";
 
       if (
         languageSupport.find((x) => {
@@ -44,18 +38,15 @@ const checkLang = (lang, languageSupport) => {
       ) {
         if (
           item.length > 2 &&
-          languageSupport.find(
-            (x) => {
-              if(
-                x.local.toLowerCase().search(itemParse) > -1 ||
+          languageSupport.find((x) => {
+            if (
+              x.local.toLowerCase().search(itemParse) > -1 ||
               itemParse.search(x.local.toLowerCase()) > -1
-              ){
-                localCheck = x.local;
-                return true;
-              }
+            ) {
+              localCheck = x.local;
+              return true;
             }
-              
-          )
+          })
         ) {
           langCanUse.push(langCheck);
         } else {
@@ -91,7 +82,7 @@ const checkLang = (lang, languageSupport) => {
   }
 };
 
-const langConfig = {
+const langConfig = reactive({
   currentLang: "",
   defaultLang: "vi",
   langSupport: [],
@@ -100,77 +91,89 @@ const langConfig = {
     const langChange = await checkLang(lang, langConfig);
 
     if (langChange) {
-      const languageTranslate = await getLanguageTranlate(langChange.lang);
+      const languageTranslate = getLanguageTranlate(langChange.lang);
 
       langConfig.message = languageTranslate;
     }
   },
 
-  async init() {
-    //Nay danh sach cac ngon ngu duoc ho tro boi he thong
+  init() {
+    return new Promise((resolve, reject) => {
+      //Nay danh sach cac ngon ngu duoc ho tro boi he thong
+      getSupportLanguage()
+        .then((response) => {
+          //Nay ngon ngu ma trinh duyet xac thuc duoc
+          //Neu nguoi dung su dung trinh duyet va trinh duyet ho tro cho xem ngon ngu cua nguoi dung
+          if (typeof navigator !== "undefined" && navigator.languages) {
+            const checkLanguage = checkLang(navigator.languages, response);
+            if (checkLanguage.check) {
+              getLanguageTranlate(checkLanguage.lang).then((response) => {
+                langConfig.message = response;
 
-    const languageSupported = await getSupportLanguage();
-
-    //Nay ngon ngu ma trinh duyet xac thuc duoc
-    //Neu nguoi dung su dung trinh duyet va trinh duyet ho tro cho xem ngon ngu cua nguoi dung
-    if (typeof navigator !== "undefined" && navigator.languages) {
-      const checkLanguage = await checkLang(
-        navigator.languages,
-        languageSupported
-      );
-
-      if (checkLanguage.check) {
-        const translatePack = await getLanguageTranlate(checkLanguage.lang);
-
-        langConfig.message = translatePack;
-
-        return langConfig;
-      }
-      //Neu khong xac dinh duoc ngon ngu ma trinh duyet tu xac thuc thi de ngon ngu mac dinh
-    }
+                resolve(langConfig);
+              });
+            }
+            //Neu khong xac dinh duoc ngon ngu ma trinh duyet tu xac thuc thi de ngon ngu mac dinh
+          }
+        })
+        //Loi khong the khoi tao
+        .catch((error) => {
+          reject(error);
+        });
+    });
   },
   sub(code) {
     return langConfig.message[0]?.translate[code];
   },
+});
+
+const getSupportLanguage = () => {
+  return new Promise((resolve, reject) => {
+    axios
+      .get(_api_v1("/language/support"))
+      .then((response) => {
+        try {
+          const langSupport = JSON.parse(response.data as any);
+          if (langSupport.length > 0) {
+            resolve(langSupport);
+          }
+        } catch (error) {
+          console.error(error);
+          reject({});
+        }
+      })
+      .catch((error) => {
+        notification.open({
+          message: "Error",
+          description: error.response.statusText,
+          ...(_notifier.error as any),
+        });
+      });
+  });
 };
 
-const getSupportLanguage = async () => {
-  const langsupport:any = await axios.get(_api_v1("/language/support")).catch((error) => {
-    notification.open({
-      message: "Error",
-      description: error.response.statusText,
-      ...(_notifier.error as any),
-    });
+const getLanguageTranlate = (language) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .get(_api_v1("/language/init/" + language))
+      .then((response) => {
+        try {
+          const langPack = JSON.parse(response.data as any);
+          resolve(langPack);
+        } catch (error) {
+          console.error(error);
+          reject({});
+        }
+      })
+      //lay du lieu loi
+      .catch((error) => {
+        notification.open({
+          message: "Error",
+          description: error.response.statusText,
+          ...(_notifier.error as any),
+        });
+      });
   });
-
-  console.log( langsupport);
-  
-  try {
-    const langSupport = JSON.parse(langsupport.data as any);
-    if (langSupport.length > 0) {
-      return langSupport;
-    }
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-const getLanguageTranlate = async (language) => {
-  const languageInit:any = await axios.get(_api_v1("/language/init/" + language)).catch((error) => {
-    notification.open({
-      message: "Error",
-      description: error.response.statusText,
-      ...(_notifier.error as any),
-    });
-  });
-
-  try {
-    const langPack = JSON.parse(languageInit.data as any);
-    return langPack;
-  } catch (error) {
-    console.error(error);
-    return {};
-  }
 };
 
 export { langConfig };

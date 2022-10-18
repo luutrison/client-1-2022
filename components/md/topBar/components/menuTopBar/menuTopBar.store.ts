@@ -4,11 +4,10 @@ import { reactive, toRaw } from "vue";
 import _api_v1 from "~~/api/v1/api";
 import _notifier from "~~/components/page/ui/notifier/notifier";
 
-const topbarReactive = reactive({
+const topbarData = reactive({
   data: [],
   getThemeData() {
-    useAsyncData("themes", () =>
-      $fetch(_api_v1("/giaodien"))
+      axios.get(_api_v1("/giaodien"))
         .then((response) => {
           try {
             const keyname = "pinned_topbar";
@@ -45,11 +44,8 @@ const topbarReactive = reactive({
           });
           // reject(false)
         })
-    );
   },
 });
-
-export default topbarReactive;
 
 const  sortData = async () => {
   try {
@@ -78,4 +74,4 @@ const  sortData = async () => {
   }
 };
 
-export { sortData };
+export { sortData , topbarData};

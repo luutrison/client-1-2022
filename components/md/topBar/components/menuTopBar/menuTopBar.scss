@@ -9,11 +9,19 @@ $colorDark: Mode.$colorDark;
   margin-bottom: 0px;
 }
 
-.#{$name}-skeleton-topbar{
-    min-width: 100px;
-    height: 50px;
-    border-radius: 10px;
+.#{$name}-skeleton-topbar-icon{
+    width: 36px;
+    height: 36px;
+    border-radius: 36px;
 }
+.#{$name}-skeleton-topbar-title{
+  width: 80px;
+  height: 16px;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+
 .#{$name}-item-mntb {
   & button {
     outline: none;
@@ -59,6 +67,38 @@ $colorDark: Mode.$colorDark;
   align-items: center;
   justify-content: center;
   position: relative;
+}
+
+.#{$name}-skeleton-topbar-place{
+  width: 100%;
+  display: flex;
+
+  align-items: center;
+}
+
+.#{$name}-skeleton-topbar-o{
+  width: 100%;
+  height: 36px;
+
+  border-radius: 6px;
+ 
+}
+
+.enter-skeleton{
+  animation: slide-down-skeleton-topbar .5s ease;
+}
+
+.leave-skeleton{
+  animation: slide-down-skeleton-topbar .5s ease reverse;
+}
+
+@keyframes slide-down-skeleton-topbar {
+  0%{
+    transform: translateY(-100px);
+  }
+  100%{
+    transform: translateY(0px);
+  }
 }
 
 [mode="dark"]{

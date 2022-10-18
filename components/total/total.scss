@@ -1,4 +1,4 @@
-@use "./scss/ui.scss" as Uis;
+@use "./scss/ui-component.scss" as Uis;
 
 @mixin ComponentNormal($config, $color){
     $name: map-get($config, name);
