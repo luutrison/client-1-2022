@@ -1,6 +1,7 @@
 import { notification } from "ant-design-vue";
 import _api_v1 from "~~/api/v1/api";
 import _notifier from "@/components/page/ui/notifier/notifier";
+import axios from "axios";
 
 
 const configLang = {
@@ -66,7 +67,6 @@ const checkLang = (lang, languageSupport) => {
     if (Array.isArray(lang)) {
       lang.forEach((langitem: string) => {
         checkLangItem(langitem);
-        console.log(langitem, "lang compare");
       });
     } else if (typeof lang === "string") {
       checkLangItem(lang);
@@ -111,8 +111,6 @@ const langConfig = {
 
     const languageSupported = await getSupportLanguage();
 
-    console.log(languageSupported, "supported Lang");
-
     //Nay ngon ngu ma trinh duyet xac thuc duoc
     //Neu nguoi dung su dung trinh duyet va trinh duyet ho tro cho xem ngon ngu cua nguoi dung
     if (typeof navigator !== "undefined" && navigator.languages) {
@@ -121,12 +119,8 @@ const langConfig = {
         languageSupported
       );
 
-      console.log(checkLanguage, "Check Lang");
-
       if (checkLanguage.check) {
         const translatePack = await getLanguageTranlate(checkLanguage.lang);
-
-        console.log(translatePack, "LanguageTranslatePack");
 
         langConfig.message = translatePack;
 
@@ -136,23 +130,23 @@ const langConfig = {
     }
   },
   sub(code) {
-    console.log(code, "code translate");
     return langConfig.message[0]?.translate[code];
   },
 };
 
 const getSupportLanguage = async () => {
-  const languageSuport: any = await useAsyncData(() =>
-    $fetch(_api_v1("/language/support"))
-  ).catch((error) => {
+  const langsupport:any = await axios.get(_api_v1("/language/support")).catch((error) => {
     notification.open({
       message: "Error",
       description: error.response.statusText,
       ...(_notifier.error as any),
     });
   });
+
+  console.log( langsupport);
+  
   try {
-    const langSupport = await JSON.parse(languageSuport.data.value as any);
+    const langSupport = JSON.parse(langsupport.data as any);
     if (langSupport.length > 0) {
       return langSupport;
     }
@@ -161,10 +155,8 @@ const getSupportLanguage = async () => {
   }
 };
 
-const getLanguageTranlate = async (lang) => {
-  const languageInit: any = await useAsyncData(() =>
-    $fetch(_api_v1("/language/init/" + lang))
-  ).catch((error) => {
+const getLanguageTranlate = async (language) => {
+  const languageInit:any = await axios.get(_api_v1("/language/init/" + language)).catch((error) => {
     notification.open({
       message: "Error",
       description: error.response.statusText,
@@ -173,8 +165,7 @@ const getLanguageTranlate = async (lang) => {
   });
 
   try {
-    const langPack = await JSON.parse(languageInit.data.value as any);
-    console.log("context message", langPack);
+    const langPack = JSON.parse(languageInit.data as any);
     return langPack;
   } catch (error) {
     console.error(error);
