@@ -77,5 +77,19 @@
     "prefix": "unClassName",
     "body": [".#{\\$name}-${1:className}{", "\t", "}"],
     "description": "Include Scss Component"
-  }
+  },
+
+  "Init Scss Module Form": {
+    "scope": "scss",
+    "prefix": "unScssModuleForm",
+    "body": ["@use \"/giaodien/modes/mode.scss\" as Mode;",
+    "\\$config: Mode.\\$config;",
+    "\\$name: map-get(Mode.\\$config, name);",
+    "\\$colorNormal: Mode.\\$colorNormal;",
+    "\\$colorDark: Mode.\\$colorDark;\n\n\n",
+    "[mode=\"dark\"]{\n\n}"
+  
+  ],
+    "description": "Include Scss Component"
+  },
 }

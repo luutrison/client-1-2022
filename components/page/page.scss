@@ -1,11 +1,7 @@
 @use "./ui/ui.scss" as Ui;
 
-@mixin ComponentSimple($config, $color){
+@mixin ComponentNormal($config, $color){
     $name: map-get($config, name);
-    @include Ui.ComponentSimple($config, $color)
-    
-}
+    @include Ui.ComponentNormal($config, $color)
 
-@mixin ComponentMode($config, $color){
-    $name: map-get($config, name);
 }

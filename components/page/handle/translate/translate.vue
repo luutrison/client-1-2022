@@ -4,21 +4,22 @@
 
 
 <script>
-import translateReactive from './translate.store.ts'
+import {langConfig} from '@/module/underscore/translate/translate'
 export default {
-    setup(){
-        translateReactive.init();
+    async setup(){
+       const lang = await langConfig.init()
+       console.log(lang, "init");
     },
     data(){
         return {
-            translateReactive
+            langConfig
         }
     },
     provide() {
         return{
-            translate: translateReactive
+            translate: langConfig
         }
-    }
+    },
 
 }
 

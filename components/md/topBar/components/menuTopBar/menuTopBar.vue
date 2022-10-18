@@ -1,31 +1,51 @@
-<script setup>
-import { _cname } from "~~/giaodien/giaodien";
-import { Button } from "ant-design-vue";
-</script>
-
 <template>
-    <div :class="_cname('item-mntb')" v-for="item, index in topbarStore.data">
-        <NuxtLink :to="item.url" :class="_cname('link')">
+    <div :class="_c('item-mntb')" v-for="item, index in dataout">
+        <div :class="[_c('skeleton-topbar'), _nc('skeleton')]" v-show="!translate.sub(item.name)"></div>
+        <NuxtLink :to="item.url" :class="_nc('link')" v-show="translate.sub(item.name)">
             <button v-on:click="clickMenu(index)" :class="checkActive(index)">
-                <div :class="_cname('icon-mntb')" v-html="item.icon"></div>
-                <div>{{translate.sub(item.name)}}</div>
+                <div :class="_c('icon-mntb')" v-html="item.icon"></div>
+                <div :class="_c('cate-name')">{{translate.sub(item.name)}}</div>
             </button>
         </NuxtLink>
     </div>
+    <!-- <div>
+        {{data?.data}}
+    </div> -->
 </template>
 
 <script>
 
-import topbarStore from "./menuTopBar.store";
+import { Button, Skeleton } from "ant-design-vue";
+
+import { sortData } from "./menuTopBar.store";
+
+
+import { _cname, _nc} from "@/giaodien/giaodien";
+
+// import topbarStore from "./menuTopBar.store";
 export default {
     inject: {
-        translate: "translate",
+        translate: "translate"
+    },
+  
+    async setup() {
+        const items = await sortData()
+        return {
+            items, Button, Skeleton, _nc
+        }
     },
 
+
+
     data() {
-        topbarStore.getThemeData()
+
+        const style = this.$style
+
         return {
-            topbarStore, currentActive: 0
+            // topbarStore,
+            currentActive: 0,
+            dataout: this.items,
+            _c: _cname(style)
         }
     },
 
@@ -35,7 +55,7 @@ export default {
         },
         checkActive(i) {
             if (this.currentActive === i) {
-                return "active";
+                return this._c("active");
             }
         },
         change() {
@@ -44,7 +64,13 @@ export default {
     },
 
     mounted() {
-        console.log(this.translate);
+        console.log(this.translate, "translate");
+
     }
 }
 </script>
+
+
+<style lang="scss" module>
+@import"./menuTopBar.scss";
+</style>

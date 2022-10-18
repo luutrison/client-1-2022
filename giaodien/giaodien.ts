@@ -1,6 +1,48 @@
+
 const _config = {
   name: "son",
 };
+
+// const _cname = (object) => {
+//   return (name) => {
+//     if (Array.isArray(name)) {
+//       var arrOut = [];
+//       name.forEach((name) => {
+//         arrOut.push(object[[_config.name, name].join("-")]);
+//       });
+//       return arrOut;
+//     } else {
+//       return object[[_config.name, name].join("-")]
+//     }
+//   }
+// }
+
+const _cname = (object) => {
+  return (name) => {
+    if (Array.isArray(name)) {
+      var arrOut = [];
+      name.forEach((name) => {
+        arrOut.push(object[[_config.name, name].join("-")]);
+      });
+      return arrOut;
+    } else {
+      return object[[_config.name, name].join("-")]
+    }
+  }
+}
+
+const _nc = (name) => {
+    if (Array.isArray(name)) {
+      var arrOut = [];
+      name.forEach((name) => {
+        arrOut.push([_config.name, name].join("-"));
+      });
+      return arrOut;
+    } else {
+      return [_config.name, name].join("-")
+    }
+}
+
 
 const _giaodien = {
   md: "simple",
@@ -22,18 +64,6 @@ const _giaodien = {
   },
 };
 
-const _cname = (arr) => {
-  if (Array.isArray(arr)) {
-    var arrOut = [];
-    arr.forEach((name) => {
-      arrOut.push(_config.name + "-" + name);
-    });
-    return arrOut;
-  } else {
-    return _config.name + "-" + arr;
-  }
-};
-
 const _loadMode = () => {
   const key = "view-mode";
   const currentMode = localStorage.getItem(key);
@@ -48,6 +78,6 @@ const _loadMode = () => {
   }
 };
 
-export { _cname, _loadMode };
+export { _loadMode , _cname, _nc};
 
 export default _giaodien;

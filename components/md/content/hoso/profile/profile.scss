@@ -1,0 +1,16 @@
+@use "/giaodien/modes/mode.scss" as Mode;
+$config: Mode.$config;
+$name: map-get(Mode.$config, name);
+$colorNormal: Mode.$colorNormal;
+$colorDark: Mode.$colorDark;
+
+.#{$name}-profile{
+    width: 100%;
+    border-radius: map-get($config, borderRadius);
+    box-shadow: 0px 2px 5px map-get($colorNormal, boxShadow);
+    background: map-get($colorNormal, background);;
+}
+
+[mode="dark"]{
+
+}

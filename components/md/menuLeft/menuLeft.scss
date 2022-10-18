@@ -1,14 +1,24 @@
-@mixin ComponentMode($config, $color){
-    $name: map-get($config, name);
-    .#{$name}-menu-left{
-        position: fixed;
-        width: 300px;
-        height: 100vh;
-        left: 0;
-        top: 0;
-        box-shadow: 0px 0px 1px 1px map-get($color, lineColor);
-        background: map-get($color, background);
-        z-index: map-get($config, layer);
+@use "/giaodien/modes/mode.scss" as Mode;
+$config: Mode.$config;
+$name: map-get(Mode.$config, name);
+$colorNormal: Mode.$colorNormal;
+$colorDark: Mode.$colorDark;
 
+.#{$name}-menu-left{
+    position: fixed;
+    width: 300px;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    box-shadow: 0px 0px 1px 1px map-get($colorNormal, lineColor);
+    background: map-get($colorNormal, background);
+    z-index: map-get($config, layer);
+
+}
+
+[mode="dark"]{
+    .#{$name}-menu-left{
+        box-shadow: 0px 0px 1px 1px map-get($colorDark, lineColor);
+        background: map-get($colorDark, background);
     }
 }

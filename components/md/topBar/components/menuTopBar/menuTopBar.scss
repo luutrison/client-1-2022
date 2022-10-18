@@ -1,48 +1,84 @@
-@mixin ComponentMode($config, $color) {
-  $name: map-get($config, name);
+@use "/giaodien/modes/mode.scss" as Mode;
+$config: Mode.$config;
+$name: map-get(Mode.$config, name);
+$colorNormal: Mode.$colorNormal;
+$colorDark: Mode.$colorDark;
+
+.#{$name}-cate-name{
+  font-size: 16px;
+  margin-bottom: 0px;
+}
+
+.#{$name}-skeleton-topbar{
+    min-width: 100px;
+    height: 50px;
+    border-radius: 10px;
+}
+.#{$name}-item-mntb {
+  & button {
+    outline: none;
+    border: none;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+    font-size: 16px;
+    position: relative;
+    height:map-get($config, topBarHeight);
+    background: map-get($colorNormal, background);
+    cursor: pointer;
+    &.#{$name}-active {
+      color: map-get($colorNormal, mainColor);
+      &::before {
+        content: "";
+        width: 100%;
+        height: 3px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: map-get($colorNormal, mainColor);
+      }
+    }
+    &:hover {
+      color: map-get($colorNormal, mainColor);
+    }
+    &:active,
+    &:focus {
+      position: relative;
+    }
+  }
+  & svg {
+    font-size: 30px;
+  }
+  font-size: 20px;
+}
+.#{$name}-icon-mntb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+[mode="dark"]{
   .#{$name}-item-mntb {
     & button {
-      outline: none;
-      border: none;
-      height: auto;
-      display: flex;
-      flex-direction: row;
-      gap: 15px;
-      align-items: center;
-      font-size: 16px;
-      position: relative;
-      height: 100%;
-      background: map-get($color, background);
+      background: map-get($colorDark, background);
       cursor: pointer;
-      &.active {
-        color: map-get($color, mainColor);
+      &.#{$name}-active {
+        color: map-get($colorDark, mainColor);
         &::before {
-          content: "";
-          width: 100%;
-          height: 3px;
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          background-color: map-get($color, mainColor);
+          background-color: map-get($colorDark, mainColor);
         }
       }
       &:hover {
-        color: map-get($color, mainColor);
+        color: map-get($colorDark, mainColor);
       }
       &:active,
       &:focus {
         position: relative;
       }
     }
-    & svg {
-      font-size: 30px;
-    }
-    font-size: 20px;
-  }
-  .#{$name}-icon-mntb {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
   }
 }
+

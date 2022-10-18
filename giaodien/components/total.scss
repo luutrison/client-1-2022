@@ -1,3 +1,12 @@
 @use "../modes/mode.scss" as Mode;
 
-@include Mode.ComponentSimple($config, $color)
+$config : Mode.$config;
+$config : Mode.$color;
+
+@mixin ComponentNormal($config, $color){
+    $name: map-get($config, name);
+    
+    .nuxt-loading-indicator{
+        background: map-get($color, mainColor) !important;
+    }
+}

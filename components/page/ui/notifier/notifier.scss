@@ -1,6 +1,6 @@
-@mixin ComponentSimple($config, $color) {
-  $name: map-get($config, name);
 
+@mixin ComponentNormal($config, $color){
+  $name: map-get($config, name);
   .#{$name}-notifier {
     border-radius: map-get($config, borderRadius);
   }

@@ -13,5 +13,4 @@ export default {
 
 
 <style>
-@import "ant-design-vue/dist/antd.css";
 </style>

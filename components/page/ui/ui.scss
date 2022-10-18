@@ -1,11 +1,7 @@
 @use "./notifier/notifier.scss" as Notifier;
 
-@mixin ComponentMode($config, $color){
-    $name: map-get($config, name);
-    
-}
 
-@mixin ComponentSimple($config, $color){
+@mixin ComponentNormal($config, $color){
     $name: map-get($config, name);
-    @include Notifier.ComponentSimple($config, $color);
+    @include Notifier.ComponentNormal($config, $color);
 }
