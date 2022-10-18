@@ -79,17 +79,16 @@ $colorDark: Mode.$colorDark;
 .#{$name}-skeleton-topbar-o{
   width: 100%;
   height: 36px;
-
   border-radius: 6px;
- 
+  animation: slide-down-skeleton-topbar .3s;
 }
 
 .enter-skeleton{
-  animation: slide-down-skeleton-topbar .5s ease;
+  animation: slide-down-skeleton-topbar .3s;
 }
 
 .leave-skeleton{
-  animation: slide-down-skeleton-topbar .5s ease reverse;
+  animation: slide-down-skeleton-topbar .3s reverse;
 }
 
 @keyframes slide-down-skeleton-topbar {

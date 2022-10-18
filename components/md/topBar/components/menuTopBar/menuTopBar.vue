@@ -1,11 +1,9 @@
 <template>
-    <Transition name="custom" :leave-from-class="$style['leave-skeleton']">
-        <div v-show="!topbarData.data.length > 0" :class="[_c('skeleton-topbar-o'), _nc('skeleton')]"></div>
-    </Transition>
+    <div v-show="!topbarData.data.length > 0" :class="[_c('skeleton-topbar-o'), _nc('skeleton')]"></div>
     <div :class="_c('item-mntb')" v-if="topbarData.data.length > 0" v-for="item, index in topbarData.data">
         <div :class="[_c('skeleton-topbar-place')]" v-if="!translate.sub(item.name)">
-            <div :class="[_c('skeleton-topbar-icon'), _nc('skeleton')]" ></div>
-            <div :class="[_c('skeleton-topbar-title'), _nc('skeleton')]" ></div>
+            <div :class="[_c('skeleton-topbar-icon'), _nc('skeleton')]"></div>
+            <div :class="[_c('skeleton-topbar-title'), _nc('skeleton')]"></div>
         </div>
         <NuxtLink :to="item.url" :class="_nc('link')" v-show="translate.sub(item.name)">
             <button v-on:click="clickMenu(index)" :class="checkActive(index)">
