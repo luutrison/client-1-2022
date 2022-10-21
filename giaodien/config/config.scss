@@ -4,8 +4,9 @@ $config: (
     topBarHeight: 60px,
     contentPadding: 20px,
     layer: 2022,
-    borderRadius: 10px,
+    borderRadius: 6px,
     simpleContainer: 688px,
+    primaryColor: brown,
 );
 
 
@@ -13,24 +14,3 @@ $same: (
   mainColor: brown,
 );
 
-$dark: map-merge(
-  $same,
-  (
-    background: black,
-    color: white,
-    boxShadow: rgb(12, 12, 12),
-    lineColor: rgb(212, 212, 212),
-    boxShadowTop: black,
-  )
-);
-
-$normal: map-merge(
-  $same,
-  (
-    background: white,
-    color: black,
-    boxShadow: rgb(163, 163, 163),
-    lineColor: rgb(212, 212, 212),
-    boxShadowTop: rgb(163, 163, 163),
-  )
-);

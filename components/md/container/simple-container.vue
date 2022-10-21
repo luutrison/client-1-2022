@@ -5,7 +5,8 @@ import { _nc } from '~~/giaodien/giaodien';
 
 <template>
     <div :class="_nc('simple-container')">
-
+        <slot></slot>
+        <div style="height: 50px;"></div>
     </div>
 </template>
 

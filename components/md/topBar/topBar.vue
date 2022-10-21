@@ -25,13 +25,9 @@ export default {
             _c: _cname(this.$style)
         }
     },
-
     components: {
         Button, Input, Grid, Row, Col
     },
-    mounted(){
-        console.log(this._c("topbar"))
-    }
 }
 </script>
 

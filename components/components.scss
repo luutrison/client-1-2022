@@ -1,14 +1,3 @@
 @use "./page/page.scss" as Page;
-@use "./total/total.scss" as Total;
-
-
-@mixin ComponentNormal($config, $color){
-    $name: map-get($config, name);
-    @include Total.ComponentNormal($config, $color)
-    
-}
-
-@mixin ComponentDark($config, $color){
-    $name: map-get($config, name);
-    
-}
+@import "./see/total.scss";
+@import "./see/my/my.scss";

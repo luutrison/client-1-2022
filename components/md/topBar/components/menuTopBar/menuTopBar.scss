@@ -37,7 +37,7 @@ $colorDark: Mode.$colorDark;
     background: map-get($colorNormal, background);
     cursor: pointer;
     &.#{$name}-active {
-      color: map-get($colorNormal, mainColor);
+      color: map-get($config, primaryColor);
       &::after {
         content: "";
         width: 100%;
@@ -46,11 +46,11 @@ $colorDark: Mode.$colorDark;
         border-radius: 5px;
         bottom: 0;
         left: 0;
-        background-color: map-get($colorNormal, mainColor);
+        background-color: map-get($config, primaryColor);
       }
     }
     &:hover {
-      color: map-get($colorNormal, mainColor);
+      color: map-get($config, primaryColor);
     }
     &:active,
     &:focus {
@@ -106,13 +106,13 @@ $colorDark: Mode.$colorDark;
       background: map-get($colorDark, background);
       cursor: pointer;
       &.#{$name}-active {
-        color: map-get($colorDark, mainColor);
+        color: map-get($config, primaryColor);
         &::before {
-          background-color: map-get($colorDark, mainColor);
+          background-color: map-get($config, primaryColor);
         }
       }
       &:hover {
-        color: map-get($colorDark, mainColor);
+        color: map-get($config, primaryColor);
       }
       &:active,
       &:focus {

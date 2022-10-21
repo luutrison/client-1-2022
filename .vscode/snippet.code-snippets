@@ -21,7 +21,7 @@
     "prefix": "unScssComponentMode",
     "body": [
       "@mixin ${1:ComponentMode}(\\$config, \\$color){",
-	  "\t\\$name: map-get(\\$config, name);",
+      "\t\\$name: map-get(\\$config, name);",
       "\t$3",
       "}"
     ],
@@ -33,7 +33,7 @@
     "prefix": "unScssComponentSimple",
     "body": [
       "@mixin ${1:ComponentSimple}(\\$config, \\$color){",
-	  "\t\\$name: map-get(\\$config, name);",
+      "\t\\$name: map-get(\\$config, name);",
       "\t$3",
       "}"
     ],
@@ -43,7 +43,9 @@
   "Include Scss Component Simple": {
     "scope": "scss",
     "prefix": "unIncludeScssComponentSimple",
-    "body": ["@include ${1:ComponentName}.ComponentSimple(\\$config, \\$color)"],
+    "body": [
+      "@include ${1:ComponentName}.ComponentSimple(\\$config, \\$color)"
+    ],
     "description": "Include Scss Component"
   },
 
@@ -82,14 +84,52 @@
   "Init Scss Module Form": {
     "scope": "scss",
     "prefix": "unScssModuleForm",
-    "body": ["@use \"/giaodien/modes/mode.scss\" as Mode;",
-    "\\$config: Mode.\\$config;",
-    "\\$name: map-get(Mode.\\$config, name);",
-    "\\$colorNormal: Mode.\\$colorNormal;",
-    "\\$colorDark: Mode.\\$colorDark;\n\n\n",
-    "[mode=\"dark\"]{\n\n}"
-  
-  ],
+    "body": [
+      "@use \"/giaodien/modes/mode.scss\" as Mode;",
+      "\\$config: Mode.\\$config;",
+      "\\$name: map-get(Mode.\\$config, name);",
+      "\\$colorNormal: Mode.\\$colorNormal;",
+      "\\$colorDark: Mode.\\$colorDark;\n\n\n",
+      "[mode=\"dark\"]{\n\n}"
+    ],
     "description": "Include Scss Component"
   },
+
+  "Export default": {
+    "scope": "vue, javascript",
+    "prefix": "unExportDefault",
+    "body": [
+      "import { _cname } from '~~/giaodien/giaodien';",
+
+      "export default {",
+      "  data() {",
+      "        return {",
+      "            _c: _cname(this.\\$style)",
+      "        }",
+      "    }",
+      "}"
+    ],
+    "description": "Export default"
+  },
+
+  "Add element with class": {
+    "scope": "vue, html",
+    "prefix": "unElementWithClass",
+    "body": [
+      "<div :class=\"[_c(['']), _nc([''])]\"></div>",
+    ],
+    "description": "Export default"
+  },
+
+  "Add class in element": {
+    "scope": "vue, html",
+    "prefix": "unAddClassInElement",
+    "body": [
+      ":class=\"[_c(['']), _nc([''])]\"",
+    ],
+    "description": "Export default"
+  },
 }
+
+
+

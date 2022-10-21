@@ -1,42 +1,6 @@
 @use "../config/config.scss" as Config;
 
-@use "/components/components.scss" as Components;
+@import "/components/components.scss";
 
+@import "../font/roboto.scss";
 
-
-$config : Config.$config;
-$name: map-get($config, name);
-
-// Default Mode
-$color: map-merge(
-  Config.$same,
-  (
-    background: white,
-    color: black,
-    boxShadow: rgb(163, 163, 163),
-    lineColor: rgb(212, 212, 212),
-    boxShadowTop: rgb(163, 163, 163),
-  )
-);
-
-@include Components.ComponentNormal($config, $color);
-
-
-
-//Dark Mode
-
-
-[mode="dark"]{
-  $color: map-merge(
-    Config.$same,
-    (
-      background: black,
-      color: white,
-      boxShadow: rgb(12, 12, 12),
-      lineColor: rgb(212, 212, 212),
-      boxShadowTop: black,
-    )
-  );
-
-  @include Components.ComponentDark($config, $color);
-}

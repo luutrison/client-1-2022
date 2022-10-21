@@ -2,14 +2,6 @@ import { notification } from "ant-design-vue";
 import _api_v1 from "~~/api/v1/api";
 import _notifier from "@/components/page/ui/notifier/notifier";
 import axios from "axios";
-import { error } from "console";
-
-const configLang = {
-  vi: {
-    local: "VN",
-    path: "/translate/vi-VN.json",
-  },
-};
 
 //Kiem tra ngon ngu co the duoc ho tro va su dung
 const checkLang = (lang, languageSupport) => {

@@ -1,0 +1,15 @@
+@use "/giaodien/modes/mode.scss" as Mode;
+$config: Mode.$config;
+$name: map-get(Mode.$config, name);
+$colorNormal: Mode.$colorNormal;
+$colorDark: Mode.$colorDark;
+
+.#{$name}-search{
+    width: 100%;
+    height: 40px;
+    border-radius: 4px;
+}
+
+// [mode="dark"]{
+
+// }
