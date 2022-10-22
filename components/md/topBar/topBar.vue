@@ -1,11 +1,6 @@
-
-<script setup>
-import MenuTopBar from './components/menuTopBar/menuTopBar.vue';
-</script>
-
 <template>
     <div :class="_c(['topbar'])">
-        <div :class="_c(['left-topbar'])">Ho So Ca Nhan</div>
+        <div :class="_c(['left-topbar'])">My</div>
         <div :class="_c(['tab-bar'])">
             <MenuTopBar></MenuTopBar>
         </div>
@@ -17,8 +12,18 @@ import MenuTopBar from './components/menuTopBar/menuTopBar.vue';
 <script>
 import { Button, Input, Grid, Row, Col } from 'ant-design-vue';
 import { _cname } from '~~/giaodien/giaodien';
+import MenuTopBar from './components/menuTopBar/menuTopBar.vue';
 
 export default {
+
+    props:{
+        container: undefined
+    },
+
+    setup(props){
+        console.log("ahihi", props.container);
+    
+    },
 
     data(){
         return {
@@ -26,8 +31,9 @@ export default {
         }
     },
     components: {
-        Button, Input, Grid, Row, Col
-    },
+        Button, Input, Grid, Row, Col, MenuTopBar
+    }
+   
 }
 </script>
 

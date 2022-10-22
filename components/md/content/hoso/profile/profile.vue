@@ -12,7 +12,7 @@ import { _nc, _cname } from '~~/giaodien/giaodien';
                     <div :class="[_nc(['col', 'col-4'])]">
                         <div :class="[_nc('col-container')]">
                             <div :class="[_nc('ratio-3x4')]">
-                                <img :class="[_nc('ratio-item'), _c('image-avt')]"
+                                <img alt="avatar" loading="lazy" :class="[_nc('ratio-item'), _c('image-avt')]"
                                     src="https://drive.google.com/uc?id=16feH-IhNgJoIJxKLOAM9mbOP0PWimvim&export=download" />
                             </div>
                         </div>
@@ -66,25 +66,162 @@ import { _nc, _cname } from '~~/giaodien/giaodien';
             </div>
         </aside>
 
-        <!-- Social Link -->
+        <!-- Ky Nang -->
+
         <aside :class="_c('block-info')">
-            <div :class="_c('title-cate')">Thông tin khác</div>
+            <div :class="_c('title-cate')">Kỹ năng</div>
+            <div :class="[_nc(['card']), _c(['info', 'social-info-block'])]">
+                <!-- So truong -->
+                <!-- <article :class="_c('item-other-info')">
+                    <div :class="_c('social-title')">
+                        Giỏi
+                    </div>
+                    <div :class="[_c('social-content'), _nc(['row', 'row-col-1'])]">
+                        <div :class="[_c(['']), _nc(['col'])]">
+                            <ul :class="[_c(['list-favorite']), _nc('')]">
+                                <li>
+                                    HTML, CSS, JS
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </article> -->
+
+                <article :class="_c('item-other-info')">
+                    <div :class="_c('social-title')">
+                        Khá
+                    </div>
+                    <div :class="[_c('social-content'), _nc(['row', 'row-col-1'])]">
+                        <div :class="[_c(['']), _nc(['col'])]">
+                            <ul :class="[_c(['list-favorite']), _nc('')]">
+                                <li>
+                                    HTML, CSS, JS, Git
+                                </li>
+                                <li>
+                                    JS - Node, React, Vue, Next, Nuxt, Express, Sass, Less
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+                <article :class="_c('item-other-info')">
+                    <div :class="_c('social-title')">
+                        Trung bình
+                    </div>
+                    <div :class="[_c('social-content'), _nc(['row', 'row-col-1'])]">
+                        <div :class="[_c(['']), _nc(['col'])]">
+                            <ul :class="[_c(['list-favorite']), _nc('')]">
+                                <li>
+                                    ASP.NET, PHP, JAVA
+                                </li>
+                                <li>
+                                    MYSQL, MSSQL, MongoDB
+                                </li>
+                                <li>
+                                    Đọc hướng dẫn sử dụng
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+                <article :class="_c('item-other-info')">
+                    <div :class="_c('social-title')">
+                        Biết cách sử dụng
+                    </div>
+                    <div :class="[_c('social-content'), _nc(['row', 'row-col-1'])]">
+                        <div :class="[_c(['']), _nc(['col'])]">
+                            <ul :class="[_c(['list-favorite']), _nc('')]">
+                                <li>
+                                    Photoshop, Illustrator
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </aside>
+
+        <!-- San Pham -->
+        <aside :class="_c('block-info')">
+            <div :class="_c('title-cate')">Sản phẩm</div>
             <div :class="[_nc(['card']), _c(['info', 'social-info-block'])]">
                 <article :class="_c('item-other-info')">
                     <div :class="_c('social-title')">
-                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24"
-                            stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <desc></desc>
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <circle cx="12" cy="5" r="2"></circle>
-                            <circle cx="5" cy="19" r="2"></circle>
-                            <circle cx="19" cy="19" r="2"></circle>
-                            <circle cx="12" cy="14" r="3"></circle>
-                            <line x1="12" y1="7" x2="12" y2="11"></line>
-                            <line x1="6.7" y1="17.8" x2="9.5" y2="15.8"></line>
-                            <line x1="17.3" y1="17.8" x2="14.5" y2="15.8"></line>
-                        </svg>
+                        Đã từng làm hoặc tham gia
+                    </div>
+                    <div :class="[_c('social-content'), _nc(['row', 'row-col-1'])]">
+                        <div :class="[_c(['']), _nc(['col'])]">
+                            <ul :class="[_c(['list-favorite']), _nc('')]">
+                                <li>
+                                    Haido.online
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </aside>
+
+
+        <!-- Thong tin khac -->
+        <aside :class="_c('block-info')">
+            <div :class="_c('title-cate')">Thông tin khác</div>
+            <div :class="[_nc(['card']), _c(['info', 'social-info-block'])]">
+                <!-- So truong -->
+
+                <article :class="_c('item-other-info')">
+                    <div :class="_c('social-title')">
+                        Sở trường
+                    </div>
+                    <div :class="[_c('social-content'), _nc(['row', 'row-col-1'])]">
+                        <div :class="[_c(['']), _nc(['col'])]">
+                            <ul :class="[_c(['list-favorite']), _nc('')]">
+                                <li>
+                                    Copy
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- So doan -->
+                <!-- <article :class="_c('item-other-info')">
+                    <div :class="_c('social-title')">
+                        Sở đoản
+                    </div>
+                    <div :class="[_c('social-content'), _nc(['row', 'row-col-1'])]">
+                        <div :class="[_c(['']), _nc(['col'])]">
+                            <ul :class="[_c(['list-favorite']), _nc('')]">
+                                <li>
+                                    
+                                    Chơi game
+                                </li>
+                                <li>
+                                    
+                                    Bơi
+                                </li>
+                                <li>
+                                    
+                                    Viết code
+                                </li>
+                                <li>
+                                    
+                                    Đi lang thang
+                                </li>
+                                <li>
+                                    
+                                    Tập thể hình
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </article> -->
+
+                <!-- Favorite -->
+                <article :class="_c('item-other-info')">
+                    <div :class="_c('social-title')">
                         Sở thích
                     </div>
                     <div :class="[_c('social-content'), _nc(['row', 'row-col-1'])]">
@@ -103,7 +240,7 @@ import { _nc, _cname } from '~~/giaodien/giaodien';
                                     Đi lang thang
                                 </li>
                                 <li>
-                                    Tập thể hình
+                                    Thể thao
                                 </li>
                             </ul>
                         </div>
@@ -115,19 +252,6 @@ import { _nc, _cname } from '~~/giaodien/giaodien';
 
                 <article :class="_c('item-other-info')">
                     <div :class="_c('social-title')">
-                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24"
-                            stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <desc></desc>
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <circle cx="12" cy="5" r="2"></circle>
-                            <circle cx="5" cy="19" r="2"></circle>
-                            <circle cx="19" cy="19" r="2"></circle>
-                            <circle cx="12" cy="14" r="3"></circle>
-                            <line x1="12" y1="7" x2="12" y2="11"></line>
-                            <line x1="6.7" y1="17.8" x2="9.5" y2="15.8"></line>
-                            <line x1="17.3" y1="17.8" x2="14.5" y2="15.8"></line>
-                        </svg>
                         Tôi cũng dùng
                     </div>
                     <div :class="[_c('social-content'), _nc(['row', 'row-col-5', 'gap-1'])]">
@@ -135,20 +259,20 @@ import { _nc, _cname } from '~~/giaodien/giaodien';
                             <div :class="[_nc(['col-container'])]">
                                 <div :class="_nc('ratio-1x1')">
                                     <div :class="[_nc(['ratio-item'])]">
-                                    <a target="_blank" href="https://fb.com/sondeptrailenhlang" :class="_nc('link')"
-                                        style="color: #2374E1">
-                                        <svg stroke="currentColor" fill="currentColor" stroke-width="0"
-                                            viewBox="0 0 16 16" height="1em" width="1em"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z">
-                                            </path>
-                                        </svg>
-                                        <span :class="_c('name-social-link')">
-                                            Facebook
-                                        </span>
-                                    </a>
-                                </div>
+                                        <a target="_blank" href="https://fb.com/sondeptrailenhlang" :class="_nc('link')"
+                                            style="color: #2374E1">
+                                            <svg stroke="currentColor" fill="currentColor" stroke-width="0"
+                                                viewBox="0 0 16 16" height="1em" width="1em"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z">
+                                                </path>
+                                            </svg>
+                                            <span :class="_c('name-social-link')">
+                                                Facebook
+                                            </span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
 
@@ -157,21 +281,21 @@ import { _nc, _cname } from '~~/giaodien/giaodien';
                             <div :class="[_nc(['col-container'])]">
                                 <div :class="_nc('ratio-1x1')">
                                     <div :class="[_nc(['ratio-item'])]">
-                                    <a target="_blank" href="https://fb.com/sondeptrailenhlang" :class="_nc('link')"
-                                        style="color: #008FF3">
-                                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" role="img"
-                                            viewBox="0 0 24 24" height="1em" width="1em"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <title></title>
-                                            <path
-                                                d="M12.49 10.2722v-.4496h1.3467v6.3218h-.7704a.576.576 0 01-.5763-.5729l-.0006.0005a3.273 3.273 0 01-1.9372.6321c-1.8138 0-3.2844-1.4697-3.2844-3.2823 0-1.8125 1.4706-3.2822 3.2844-3.2822a3.273 3.273 0 011.9372.6321l.0006.0005zM6.9188 7.7896v.205c0 .3823-.051.6944-.2995 1.0605l-.03.0343c-.0542.0615-.1815.206-.2421.2843L2.024 14.8h4.8948v.7682a.5764.5764 0 01-.5767.5761H0v-.3622c0-.4436.1102-.6414.2495-.8476L4.8582 9.23H.1922V7.7896h6.7266zm8.5513 8.3548a.4805.4805 0 01-.4803-.4798v-7.875h1.4416v8.3548H15.47zM20.6934 9.6C22.52 9.6 24 11.0807 24 12.9044c0 1.8252-1.4801 3.306-3.3066 3.306-1.8264 0-3.3066-1.4808-3.3066-3.306 0-1.8237 1.4802-3.3044 3.3066-3.3044zm-10.1412 5.253c1.0675 0 1.9324-.8645 1.9324-1.9312 0-1.065-.865-1.9295-1.9324-1.9295s-1.9324.8644-1.9324 1.9295c0 1.0667.865 1.9312 1.9324 1.9312zm10.1412-.0033c1.0737 0 1.945-.8707 1.945-1.9453 0-1.073-.8713-1.9436-1.945-1.9436-1.0753 0-1.945.8706-1.945 1.9436 0 1.0746.8697 1.9453 1.945 1.9453z">
-                                            </path>
-                                        </svg>
-                                        <span :class="_c('name-social-link')">
-                                            Zalo
-                                        </span>
-                                    </a>
-                                </div>
+                                        <a target="_blank" href="https://fb.com/sondeptrailenhlang" :class="_nc('link')"
+                                            style="color: #008FF3">
+                                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" role="img"
+                                                viewBox="0 0 24 24" height="1em" width="1em"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <title></title>
+                                                <path
+                                                    d="M12.49 10.2722v-.4496h1.3467v6.3218h-.7704a.576.576 0 01-.5763-.5729l-.0006.0005a3.273 3.273 0 01-1.9372.6321c-1.8138 0-3.2844-1.4697-3.2844-3.2823 0-1.8125 1.4706-3.2822 3.2844-3.2822a3.273 3.273 0 011.9372.6321l.0006.0005zM6.9188 7.7896v.205c0 .3823-.051.6944-.2995 1.0605l-.03.0343c-.0542.0615-.1815.206-.2421.2843L2.024 14.8h4.8948v.7682a.5764.5764 0 01-.5767.5761H0v-.3622c0-.4436.1102-.6414.2495-.8476L4.8582 9.23H.1922V7.7896h6.7266zm8.5513 8.3548a.4805.4805 0 01-.4803-.4798v-7.875h1.4416v8.3548H15.47zM20.6934 9.6C22.52 9.6 24 11.0807 24 12.9044c0 1.8252-1.4801 3.306-3.3066 3.306-1.8264 0-3.3066-1.4808-3.3066-3.306 0-1.8237 1.4802-3.3044 3.3066-3.3044zm-10.1412 5.253c1.0675 0 1.9324-.8645 1.9324-1.9312 0-1.065-.865-1.9295-1.9324-1.9295s-1.9324.8644-1.9324 1.9295c0 1.0667.865 1.9312 1.9324 1.9312zm10.1412-.0033c1.0737 0 1.945-.8707 1.945-1.9453 0-1.073-.8713-1.9436-1.945-1.9436-1.0753 0-1.945.8706-1.945 1.9436 0 1.0746.8697 1.9453 1.945 1.9453z">
+                                                </path>
+                                            </svg>
+                                            <span :class="_c('name-social-link')">
+                                                Zalo
+                                            </span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -9,18 +9,20 @@ import SimpleContainer from '../components/md/container/simple-container.vue';
 
 <template>
     <Translate>
-        <main :class="_nc('main-view')">
-            <NuxtLoadingIndicator></NuxtLoadingIndicator>
-            <TopBar></TopBar>
-            <!-- <MenuLeft></MenuLeft> -->
+        <NuxtLoadingIndicator></NuxtLoadingIndicator>
+        <TopBar :container="containerRef"></TopBar>
+
+        <!-- <MenuLeft></MenuLeft> -->
+        <main ref="containerRef" :class="_nc('main-view')">
             <SimpleContainer>
                 <slot></slot>
             </SimpleContainer>
-            <!-- <NuxtPage></NuxtPage> -->
-            <div>
-
-            </div>
         </main>
+
+        <!-- <NuxtPage></NuxtPage> -->
+        <div>
+
+        </div>
     </Translate>
 </template>
 
@@ -29,6 +31,7 @@ import SimpleContainer from '../components/md/container/simple-container.vue';
 export default {
     data() {
         return {
+            containerRef: null
         }
     },
 
@@ -37,6 +40,9 @@ export default {
             _c: _cname(this.scss)
         }
     },
+
+    mounted() {
+    }
 
 }
 </script>

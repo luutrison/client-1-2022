@@ -54,15 +54,12 @@ $name: map-get($config, name);
     0px;
 }
 .#{$name}-main-view {
-  position: fixed;
   width: 100%;
   height: 100vh;
   top: 0;
   left: 0;
   display: flex;
   justify-content: center;
-  overflow-y: scroll;
-  background-color: rgb(245, 245, 245);
 }
 
 .#{$name}-card {
