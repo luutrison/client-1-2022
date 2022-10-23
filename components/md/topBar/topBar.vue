@@ -16,15 +16,6 @@ import MenuTopBar from './components/menuTopBar/menuTopBar.vue';
 
 export default {
 
-    props:{
-        container: undefined
-    },
-
-    setup(props){
-        console.log("ahihi", props.container);
-    
-    },
-
     data(){
         return {
             _c: _cname(this.$style)

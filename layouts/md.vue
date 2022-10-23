@@ -10,10 +10,10 @@ import SimpleContainer from '../components/md/container/simple-container.vue';
 <template>
     <Translate>
         <NuxtLoadingIndicator></NuxtLoadingIndicator>
-        <TopBar :container="containerRef"></TopBar>
+        <TopBar></TopBar>
 
         <!-- <MenuLeft></MenuLeft> -->
-        <main ref="containerRef" :class="_nc('main-view')">
+        <main :class="_nc('main-view')">
             <SimpleContainer>
                 <slot></slot>
             </SimpleContainer>
@@ -31,7 +31,6 @@ import SimpleContainer from '../components/md/container/simple-container.vue';
 export default {
     data() {
         return {
-            containerRef: null
         }
     },
 
