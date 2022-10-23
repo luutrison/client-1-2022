@@ -12,11 +12,8 @@
 export default {
 
     mounted() {
-        console.log(this.$route);
-      
     },
     data() {
-        console.log(this.$route);
         return {
             id: this.$route.params.id,
         }
