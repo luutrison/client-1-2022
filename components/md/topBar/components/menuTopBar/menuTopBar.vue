@@ -1,5 +1,5 @@
 <template>
-    <div v-show="!topbarData.data.length > 0" :class="[_c('skeleton-topbar-o'), _nc('skeleton')]"></div>
+    <div v-if="!topbarData.data.length > 0" :class="[_c('skeleton-topbar-o'), _nc('skeleton')]"></div>
     <div :class="_c('item-mntb')" v-if="topbarData.data.length > 0" v-for="item, index in topbarData.data">
         <div :class="[_c('skeleton-topbar-place')]" v-if="!translate.sub(item.name)">
             <div :class="[_c('skeleton-topbar-icon'), _nc('skeleton')]"></div>

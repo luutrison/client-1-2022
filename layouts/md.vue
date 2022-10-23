@@ -18,11 +18,6 @@ import SimpleContainer from '../components/md/container/simple-container.vue';
                 <slot></slot>
             </SimpleContainer>
         </main>
-
-        <!-- <NuxtPage></NuxtPage> -->
-        <div>
-
-        </div>
     </Translate>
 </template>
 
@@ -33,13 +28,6 @@ export default {
         return {
         }
     },
-
-    provide() {
-        return {
-            _c: _cname(this.scss)
-        }
-    },
-
     mounted() {
     }
 
