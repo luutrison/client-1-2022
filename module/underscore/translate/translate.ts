@@ -131,7 +131,7 @@ const getSupportLanguage = () => {
           }
         } catch (error) {
           console.error(error);
-          reject({});
+          reject(error);
         }
       })
       .catch((error) => {

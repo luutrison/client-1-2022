@@ -7,47 +7,48 @@ import _notifier from "~~/components/page/ui/notifier/notifier";
 const topbarData = reactive({
   data: [],
   getThemeData() {
-      axios.get(_api_v1("/giaodien"))
-        .then((response) => {
-          try {
-            const keyname = "pinned_topbar";
+    axios
+      .get(_api_v1("/giaodien"))
+      .then((response) => {
+        try {
+          const keyname = "pinned_topbar";
 
-            const resData = JSON.parse(response.data);
+          const resData = JSON.parse(response.data);
 
-            if (resData) {
-              const topbar = resData.find((x) => x.name === keyname);
+          if (resData) {
+            const topbar = resData.find((x) => x.name === keyname);
 
-              const items = topbar.items.sort((a, b) => {
-                if (a.order < b.order) {
-                  return -1;
-                } else {
-                  return 1;
-                }
-              });
-              this.data = items;
-
-              // resolve(true);
-            }
-          } catch (error) {
-            notification.open({
-              message: "Error",
-              description: error,
-              ...(_notifier.error as any),
+            const items = topbar.items.sort((a, b) => {
+              if (a.order < b.order) {
+                return -1;
+              } else {
+                return 1;
+              }
             });
+            this.data = items;
+
+            // resolve(true);
           }
-        })
-        .catch((error) => {
+        } catch (error) {
           notification.open({
             message: "Error",
             description: error,
             ...(_notifier.error as any),
           });
-          // reject(false)
-        })
+        }
+      })
+      .catch((error) => {
+        notification.open({
+          message: "Error",
+          description: error,
+          ...(_notifier.error as any),
+        });
+        // reject(false)
+      });
   },
 });
 
-const  sortData = async () => {
+const sortData = async () => {
   try {
     const idata = await useAsyncData(() => $fetch(_api_v1("/giaodien")));
     const keyname = "pinned_topbar";
@@ -74,4 +75,27 @@ const  sortData = async () => {
   }
 };
 
-export { sortData , topbarData};
+export { sortData, topbarData };
+
+
+// const sortDatavt = () => {
+//   var sort = [];
+//   captinh.forEach((element) => {
+//     var item = {};
+//     item["code"] = element["Mã"];
+//     Object.keys(lv).forEach((key) => {
+//       if (lv[key] === element["Cấp"]) {
+//         item["level"] = key;
+//       }
+//     });
+//     item["name"] = element["Tên"];
+//     // item["dcode"] = element["Mã QH"];
+//     // item["pcode"] = element["Mã TP"];
+
+//     sort.push(item);
+//   });
+
+//   console.log(sort);
+// };
+
+// export { sortDatavt };

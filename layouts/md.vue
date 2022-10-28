@@ -8,29 +8,25 @@ import SimpleContainer from '../components/md/container/simple-container.vue';
 </script>
 
 <template>
-    <Translate>
-        <NuxtLoadingIndicator></NuxtLoadingIndicator>
-        <TopBar></TopBar>
+    <div>
+        <Translate>
+            <NuxtLoadingIndicator></NuxtLoadingIndicator>
+            <TopBar></TopBar>
 
-        <!-- <MenuLeft></MenuLeft> -->
-        <main :class="_nc('main-view')">
-            <SimpleContainer>
-                <slot></slot>
-            </SimpleContainer>
-        </main>
-    </Translate>
+            <!-- <MenuLeft></MenuLeft> -->
+            <main :class="_nc('main-view')">
+                <SimpleContainer>
+                    <slot></slot>
+                </SimpleContainer>
+            </main>
+        </Translate>
+    </div>
+
 </template>
 
 <script>
 
 export default {
-    data() {
-        return {
-        }
-    },
-    mounted() {
-    }
-
 }
 </script>
 

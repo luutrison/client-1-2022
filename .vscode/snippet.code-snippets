@@ -99,9 +99,14 @@
     "scope": "vue, javascript",
     "prefix": "unExportDefault",
     "body": [
-      "import { _cname } from '~~/giaodien/giaodien';",
+      "import { _cname, _nc } from '~~/giaodien/giaodien';",
 
       "export default {",
+      "setup() {",
+      "  return {",
+      "      _nc",
+      "  }",
+      "},",
       "  data() {",
       "        return {",
       "            _c: _cname(this.\\$style)",

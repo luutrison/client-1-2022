@@ -1,5 +1,7 @@
 <script setup>
 import { _nc, _cname } from '~~/giaodien/giaodien';
+import {profileData} from './profile.store'
+const data = await profileData.getDataAsync()
 </script>
 
 <template>
@@ -18,30 +20,30 @@ import { _nc, _cname } from '~~/giaodien/giaodien';
                         </div>
 
                     </div>
-                    <div :class="[_nc(['col', 'col-8']), _c('information')]">
+                    <div v-if="userData" :class="[_nc(['col', 'col-8']), _c('information')]">
                         <div :class="[_nc('col-container')]">
                             <div :class="_c('content-block')">
                                 <div :class="_c('title')">
                                     Họ và tên:
                                 </div>
                                 <div :class="_c('name')">
-                                    Lưu Trí Sơn
+                                    {{data.profile?.name}}
                                 </div>
                             </div>
 
                             <div :class="_c('content-block')">
                                 <div :class="_c('title')">Địa chỉ:</div>
-                                <div>Đông Tảo, Khoái Châu, Hưng Yên</div>
+                                <div>{{data.profile?.commune}}, {{data.profile?.district}}, {{data.profile?.province}}</div>
                             </div>
 
                             <div :class="_c('content-block')">
                                 <div :class="_c('title')">Email:</div>
-                                <div>luutrison@gmail.com</div>
+                                <div>{{data.profile?.email}}</div>
                             </div>
 
                             <div :class="_c('content-block')">
                                 <div :class="_c('title')">Số điện thoại:</div>
-                                <div>0705869048</div>
+                                <div>{{data.profile?.phone}}</div>
                             </div>
                         </div>
 
@@ -186,39 +188,6 @@ import { _nc, _cname } from '~~/giaodien/giaodien';
                     </div>
                 </article>
 
-                <!-- So doan -->
-                <!-- <article :class="_c('item-other-info')">
-                    <div :class="_c('social-title')">
-                        Sở đoản
-                    </div>
-                    <div :class="[_c('social-content'), _nc(['row', 'row-col-1'])]">
-                        <div :class="[_c(['']), _nc(['col'])]">
-                            <ul :class="[_c(['list-favorite']), _nc('')]">
-                                <li>
-                                    
-                                    Chơi game
-                                </li>
-                                <li>
-                                    
-                                    Bơi
-                                </li>
-                                <li>
-                                    
-                                    Viết code
-                                </li>
-                                <li>
-                                    
-                                    Đi lang thang
-                                </li>
-                                <li>
-                                    
-                                    Tập thể hình
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </article> -->
-
                 <!-- Favorite -->
                 <article :class="_c('item-other-info')">
                     <div :class="_c('social-title')">
@@ -331,12 +300,15 @@ import { _nc, _cname } from '~~/giaodien/giaodien';
 </template>
 
 <script>
-
 export default {
     data() {
         return {
-            _c: _cname(this.$style)
+            _c: _cname(this.$style),
+            userData: this.data
         }
+    },
+    mounted(){
+       console.log(this.data);
     }
 }
 
