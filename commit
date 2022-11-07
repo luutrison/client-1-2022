@@ -12,4 +12,4 @@ const cmd = exec(`git add .;
       })
 
 
-      cmd.stdin.write("ahihihihihihihihihih");
+      cmd.stdin.write("luutrison");
