@@ -1,0 +1,90 @@
+@use "/src/giaodien/modes/mode.scss" as Mode;
+@import "./my-config.scss";
+$config: Mode.$config;
+$name: map-get(Mode.$config, name);
+$colorNormal: Mode.$colorNormal;
+$colorDark: Mode.$colorDark;
+//my config
+
+
+@mixin components($point: false) {
+  $p: "";
+  @if $point != false {
+    $p: -#{$point};
+  }
+  @for $var from 1 to calc($peace + 1) {
+    .#{$name}-row-col#{$p}-#{$var} {
+      & .#{$name}-col {
+        width: calc((100 / $var) * 1% - calc($defaltCalcUnit * 2));
+        padding: $defaltCalcUnit;
+      }
+    }
+    .#{$name}-col#{$p}-#{$var} {
+      width: calc((100 / $peace) * $var * 1% - calc($defaltCalcUnit* 2));
+      padding: $defaltCalcUnit;
+    }
+
+    .#{$name}-gap#{$p}-#{$var} {
+      margin: calc((-3px * $var) - $defaltCalcUnit);
+      & .#{$name}-col-container {
+        margin: calc(3px * $var);
+      }
+    }
+
+    @each $namec, $object in $spacer {
+      $subname: map-get($object, sub);
+      $css: map-get($object, css);
+
+      $unitItem: "";
+
+      @if map-has-key($object, unit) {
+        $unitItem: map-get($object, unit);
+      }
+
+     
+        @if length($css) == 1 {
+          @if map-has-key($object, items) {
+            @each $itemObject in map-get($object, items) {
+              .#{$name}-#{$subname}#{$p}-#{$itemObject} {
+                #{$css}: #{$itemObject}#{$unitItem};
+              }
+            }
+          } @else {
+            .#{$name}-#{$subname}#{$p}-#{$var} {
+              #{$css}: calc(($defaultColumnSpace * $var ) * calc(#{$unitItem}));
+            }
+          }
+        } @else {
+          @each $cssItem in $css {
+            @if map-has-key($object, items) {
+              @each $itemObject in map-get($object, items) {
+                .#{$name}-#{$subname}#{$p}-#{$itemObject} {
+                  #{$cssItem}: #{$itemObject}#{$unitItem};
+                }
+              }
+            } @else {
+              .#{$name}-#{$subname}#{$p}-#{$var} {
+                #{$cssItem}: calc(($defaultColumnSpace * $var ) * calc(#{$unitItem}));
+              }
+            }
+          }
+        }
+      
+    }
+  }
+}
+@include components();
+
+@each $point, $size in $screen {
+  @media (min-width: $size) {
+    @include components($point);
+  }
+}
+
+@each $item, $val in $ratio {
+  .#{$name}-ratio-#{$item} {
+    width: 100%;
+    padding-top: calc(100% * #{$val});
+    position: relative;
+  }
+}

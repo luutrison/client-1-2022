@@ -1,6 +1,5 @@
 <script setup>
-import Login from "@/components/page/components/login/login.vue";
-import { dataToEsm } from "@rollup/pluginutils";
+import Login from "@/src/pages/account/login/login.vue";
 </script>
 
 <template>

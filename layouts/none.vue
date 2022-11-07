@@ -6,5 +6,5 @@
 </template>
 
 <style lang="scss">
-@import "@/giaodien/modes/mode-normal.scss";
+@import "@/src/giaodien/modes/mode-normal.scss";
 </style>

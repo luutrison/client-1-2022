@@ -1,9 +1,9 @@
 <script setup>
-import { _cname, _nc } from '../giaodien/giaodien'
-import TopBar from '~~/components/md/topBar/topBar.vue';
-import MenuLeft from '~~/components/md/menuLeft/menuLeft.vue';
-import Translate from '../components/page/handle/translate/translate.vue';
-import SimpleContainer from '../components/md/container/simple-container.vue';
+import { cname, nc } from '../src/giaodien/giaodien'
+import TopBar from '~~/src/components/md/topBar/topBar.vue';
+import MenuLeft from '~~/src/components/md/menuLeft/menuLeft.vue';
+import Translate from '../src/components/current/handle/translate/translate.vue';
+import SimpleContainer from '../src/components/md/container/simple-container.vue';
 
 </script>
 
@@ -14,7 +14,7 @@ import SimpleContainer from '../components/md/container/simple-container.vue';
             <TopBar></TopBar>
 
             <!-- <MenuLeft></MenuLeft> -->
-            <main :class="_nc('main-view')">
+            <main :class="nc('main-view')">
                 <SimpleContainer>
                     <slot></slot>
                 </SimpleContainer>
@@ -32,5 +32,5 @@ export default {
 
 
 <style lang="scss">
-@import "@/giaodien/modes/mode-normal.scss";
+@import "@/src/giaodien/modes/mode-normal.scss";
 </style>

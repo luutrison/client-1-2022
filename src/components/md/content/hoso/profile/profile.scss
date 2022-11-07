@@ -1,0 +1,186 @@
+@use "/src/giaodien/modes/mode.scss" as Mode;
+$config: Mode.$config;
+$name: map-get(Mode.$config, name);
+$colorNormal: Mode.$colorNormal;
+$colorDark: Mode.$colorDark;
+
+.#{$name}-profile {
+  .#{$name}-block-info:not(:last-child) {
+    margin-bottom: 20px;
+  }
+  .#{$name}-item-other-info:not(:last-child) {
+    margin-bottom: 30px;
+  }
+}
+
+.#{$name}-title-cate {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.#{$name}-image-avt {
+  box-shadow: 0px 2px 5px map-get($config, primaryColor);
+}
+.#{$name}-tape {
+  position: absolute;
+  left: -50px;
+  top: 0;
+  width: 150px;
+  height: 50px;
+  transform: rotate(315deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  & svg {
+    position: absolute;
+    font-size: 30px;
+    color: white;
+  }
+}
+
+.#{$name}-name {
+  font-size: 30px;
+  font-weight: bold;
+  color: map-get($config, primaryColor);
+}
+
+.#{$name}-verified {
+  background: rgb(0, 152, 63);
+}
+
+.#{$name}-not-verify {
+  background: rgb(168, 0, 0);
+}
+
+.#{$name}-info {
+  position: relative;
+  overflow: hidden;
+  background: white;
+}
+
+.#{$name}-content-block {
+  .#{$name}-title {
+    margin-bottom: 10px;
+    & svg {
+      margin-right: 10px;
+      font-size: 30px;
+    }
+  }
+}
+
+.#{$name}-information {
+  & .#{$name}-content-block:not(:last-child) {
+    border-bottom: solid 1px map-get($config, primaryColor);
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+.#{$name}-social-title {
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  color: map-get($config, primaryColor);
+  margin-bottom: 20px;
+  padding-bottom: 25px;
+  position: relative;
+  & svg {
+    font-size: 30px;
+    margin-right: 10px;
+  }
+  &:after {
+    content: "";
+    width: 200px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 8px;
+    border-radius: 10px;
+    background: map-get($config, primaryColor);
+  }
+  &:before {
+    content: "";
+    width: 100%;
+    position: absolute;
+    bottom: 2.5px;
+    left: 0;
+    height: 3px;
+    border-radius: 3px;
+    background: map-get($colorNormal, boxShadow);
+  }
+}
+
+.#{$name}-social-info-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.#{$name}-social-content {
+}
+
+.#{$name}-item-social {
+  & svg {
+    font-size: 40px;
+    margin-bottom: 10px;
+    transform: scale(1);
+    transition: 0.1s;
+  }
+  & a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: map-get($config, borderRadius);
+    box-shadow: inset 0px 0px 1px 2px, 5px 5px 1px gainsboro;
+    height: 100%;
+    transition: 0.3s ease;
+    &:hover {
+      box-shadow: inset 0px 0px 1px 2px, 5px 5px 1px;
+      & svg {
+        transform: scale(1.1);
+      }
+    }
+  }
+  .#{$name}-name-social-link {
+    font-weight: bold;
+  }
+}
+
+.#{$name}-list-favorite {
+  // margin: 0;
+  list-style: none;
+  & li {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+    &::before {
+      content: "";
+      background-image: url('data:image/svg+xml;utf8,<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="8"></circle></svg>');
+      width: 10px;
+      height: 10px;
+      margin-right: 15px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      position: absolute;
+      left: -20px;
+      top: 5px;
+    }
+  }
+  & li:not(:last-child) {
+    margin-bottom: 10px;
+  }
+  & svg {
+    font-size: 20px;
+    margin-right: 13px;
+    color: map-get($config, primaryColor);
+  }
+}
+
+[mode="dark"] {
+}

@@ -99,17 +99,17 @@
     "scope": "vue, javascript",
     "prefix": "unExportDefault",
     "body": [
-      "import { _cname, _nc } from '~~/giaodien/giaodien';",
+      "import { cname, nc } from '~~/src/giaodien/giaodien';",
 
       "export default {",
       "setup() {",
       "  return {",
-      "      _nc",
+      "      nc",
       "  }",
       "},",
       "  data() {",
       "        return {",
-      "            _c: _cname(this.\\$style)",
+      "            mc: cname(this.\\$style)",
       "        }",
       "    }",
       "}"
@@ -121,7 +121,7 @@
     "scope": "vue, html",
     "prefix": "unElementWithClass",
     "body": [
-      "<div :class=\"[_c(['']), _nc([''])]\"></div>",
+      "<div :class=\"[mc(''), nc('')]\"></div>",
     ],
     "description": "Export default"
   },
@@ -130,7 +130,7 @@
     "scope": "vue, html",
     "prefix": "unAddClassInElement",
     "body": [
-      ":class=\"[_c(['']), _nc([''])]\"",
+      ":class=\"[mc(''), nc('')]\"",
     ],
     "description": "Export default"
   },

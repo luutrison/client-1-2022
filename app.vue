@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { _giaodien } from '@/store/store'
+import { _giaodien } from '@/src/store/store'
 export default {
   setup() {
     return {

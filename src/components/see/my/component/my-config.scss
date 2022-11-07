@@ -1,0 +1,143 @@
+$screen: (
+  xs: 200px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);
+
+$peace: 12;
+$defaultColumnSpace: 5;
+$defaultUnitRow: 1px;
+
+$defaltCalcUnit: calc($defaultColumnSpace * $defaultUnitRow);
+
+$ratio: (
+  1x1: 1,
+  2x3: calc(3 / 2),
+  3x4: calc(4 / 3),
+  16x9: calc(9 / 16),
+  21x9: calc(9 / 21),
+);
+
+$screenStep: (25, 50, 75, 100);
+
+$spacer: (
+  marginTop: (
+    sub: "mt",
+    css: "margin-top",
+    unit: "1px",
+  ),
+  marginBottom: (
+    sub: "mb",
+    css: "margin-bottom",
+    unit: "1px",
+  ),
+  marginLeft: (
+    sub: "ml",
+    css: "margin-left",
+    unit: "1px",
+  ),
+  marginRight: (
+    sub: "mr",
+    css: "margin-right",
+    unit: "1px",
+  ),
+  paddingTop: (
+    sub: "pt",
+    css: "padding-top",
+    unit: "1px",
+  ),
+  paddingBottom: (
+    sub: "pb",
+    css: "padding-bottom",
+    unit: "1px",
+  ),
+  paddingLeft: (
+    sub: "pl",
+    css: "padding-left",
+    unit: "1px",
+  ),
+  paddingRight: (
+    sub: "pr",
+    css: "padding-right",
+    unit: "1px",
+  ),
+  display: (
+    sub: "d",
+    css: "display",
+    items: (
+      "block",
+      "flex",
+      "grid",
+      "none",
+    ),
+  ),
+  height: (
+    sub: "h",
+    css: "height",
+    unit: "1%",
+    items: $screenStep,
+  ),
+  width: (
+    sub: "w",
+    css: "width",
+    unit: "1%",
+    items: $screenStep,
+  ),
+  heightScreen: (
+    sub: "vh",
+    css: "height",
+    unit: "1vh",
+    items: $screenStep,
+  ),
+  widthScreen: (
+    sub: "vw",
+    css: "width",
+    unit: "1vw",
+    items: $screenStep,
+  ),
+  position: (
+    sub: "p",
+    css: "position",
+    items: (
+      "absolute",
+      "relative",
+      "static",
+      "sticky",
+    ),
+  ),
+  marginHorizone: (
+    sub: "mx",
+    css: (
+      "margin-left",
+      "margin-right",
+    ),
+    unit: "1px",
+  ),
+  marginVertical: (
+    sub: "my",
+    css: (
+      "margin-top",
+      "margin-bottom",
+    ),
+    unit: "1px",
+  ),
+  paddingHorizone: (
+    sub: "px",
+    css: (
+      "padding-top",
+      "padding-bottom",
+    ),
+    unit: "1px",
+  ),
+  paddingVertical: (
+    sub: "py",
+    css: (
+      "padding-top",
+      "padding-bottom",
+    ),
+    unit: "1px",
+  ),
+);
