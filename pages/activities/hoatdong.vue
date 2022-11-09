@@ -1,3 +1,0 @@
-<template>
-    hoat dong
-</template>

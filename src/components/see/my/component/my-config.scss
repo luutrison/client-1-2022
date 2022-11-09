@@ -27,42 +27,52 @@ $spacer: (
   marginTop: (
     sub: "mt",
     css: "margin-top",
-    unit: "1px",
+    unitcount: 1,
+    unit: "px",
   ),
   marginBottom: (
     sub: "mb",
     css: "margin-bottom",
-    unit: "1px",
+    unitcount: 1,
+    unit: "px",
   ),
   marginLeft: (
     sub: "ml",
     css: "margin-left",
-    unit: "1px",
+    unit: "px",
+    unitcount: 1,
+
   ),
   marginRight: (
     sub: "mr",
     css: "margin-right",
-    unit: "1px",
+    unitcount: 1,
+    unit: "px",
   ),
   paddingTop: (
     sub: "pt",
     css: "padding-top",
-    unit: "1px",
+    unitcount: 1,
+    unit: "px",
   ),
   paddingBottom: (
     sub: "pb",
     css: "padding-bottom",
-    unit: "1px",
+    unitcount: 1,
+    unit: "px",
   ),
   paddingLeft: (
     sub: "pl",
     css: "padding-left",
-    unit: "1px",
+    unitcount: 1,
+    unit: "px",
   ),
   paddingRight: (
     sub: "pr",
     css: "padding-right",
-    unit: "1px",
+    unit: "px",
+    unitcount: 1,
+
   ),
   display: (
     sub: "d",
@@ -77,25 +87,25 @@ $spacer: (
   height: (
     sub: "h",
     css: "height",
-    unit: "1%",
+    unit: "%",
     items: $screenStep,
   ),
   width: (
     sub: "w",
     css: "width",
-    unit: "1%",
+    unit: "%",
     items: $screenStep,
   ),
   heightScreen: (
     sub: "vh",
     css: "height",
-    unit: "1vh",
+    unit: "vh",
     items: $screenStep,
   ),
   widthScreen: (
     sub: "vw",
     css: "width",
-    unit: "1vw",
+    unit: "vw",
     items: $screenStep,
   ),
   position: (
@@ -114,7 +124,8 @@ $spacer: (
       "margin-left",
       "margin-right",
     ),
-    unit: "1px",
+    unitcount: 1,
+    unit: "px",
   ),
   marginVertical: (
     sub: "my",
@@ -122,7 +133,8 @@ $spacer: (
       "margin-top",
       "margin-bottom",
     ),
-    unit: "1px",
+    unitcount: 1,
+    unit: "px",
   ),
   paddingHorizone: (
     sub: "px",
@@ -130,7 +142,8 @@ $spacer: (
       "padding-top",
       "padding-bottom",
     ),
-    unit: "1px",
+    unitcount: 1,
+    unit: "px",
   ),
   paddingVertical: (
     sub: "py",
@@ -138,6 +151,18 @@ $spacer: (
       "padding-top",
       "padding-bottom",
     ),
-    unit: "1px",
+
+    unitcount: 1,
+    unit: "px",
   ),
+  alignItems: (
+    sub: "ai",
+    css: "align-items",
+    items: ("center", "flex-start", "flex-end")
+  ),
+  justifyContent: (
+    sub: "jc",
+    css: "justify-content",
+    items: ("center", "flex-start", "flex-end", "space-between")
+  )
 );

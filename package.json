@@ -12,8 +12,10 @@
     "sass": "^1.55.0"
   },
   "dependencies": {
+    "@types/node": "^18.11.9",
     "ant-design-vue": "^3.2.12",
     "axios": "^1.1.2",
-    "node": "^16.13.2"
+    "node": "^16.13.2",
+    "typescript": "^4.8.4"
   }
 }

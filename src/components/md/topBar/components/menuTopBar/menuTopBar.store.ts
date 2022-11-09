@@ -1,50 +1,52 @@
 import { notification } from "ant-design-vue";
 import axios from "axios";
 import { reactive, toRaw } from "vue";
-import _api_v1 from "@/src/api/v1/api";
-import _notifier from "~~/src/components/current/ui/notifier/notifier";
+import _api_v1 from "../../../../../../src/api/v1/api";
+import _notifier from "../../../../../../src/components/current/ui/notifier/notifier";
 
 const topbarData = reactive({
   data: [],
   getThemeData() {
-    axios
-      .get(_api_v1("/giaodien"))
-      .then((response) => {
-        try {
-          const keyname = "pinned_topbar";
+    return new Promise((resolve, reject) => {
+      axios
+        .get(_api_v1("/giaodien"))
+        .then((response) => {
+          try {
+            const keyname = "pinned_topbar";
 
-          const resData = JSON.parse(response.data);
+            const resData = JSON.parse(response.data);
 
-          if (resData) {
-            const topbar = resData.find((x) => x.name === keyname);
+            if (resData) {
+              const topbar = resData.find((x) => x.name === keyname);
 
-            const items = topbar.items.sort((a, b) => {
-              if (a.order < b.order) {
-                return -1;
-              } else {
-                return 1;
-              }
-            });
-            this.data = items;
-
-            // resolve(true);
+              const items = topbar.items.sort((a, b) => {
+                if (a.order < b.order) {
+                  return -1;
+                } else {
+                  return 1;
+                }
+              });
+              this.data = items;
+              resolve(this.data);
+            }
+          } catch (error) {
+            reject(error);
+            // notification.open({
+            //   message: "Error",
+            //   description: error,
+            //   ...(_notifier.error as any),
+            // });
           }
-        } catch (error) {
+        })
+        .catch((error) => {
           notification.open({
             message: "Error",
             description: error,
             ...(_notifier.error as any),
           });
-        }
-      })
-      .catch((error) => {
-        notification.open({
-          message: "Error",
-          description: error,
-          ...(_notifier.error as any),
+          // reject(false)
         });
-        // reject(false)
-      });
+    });
   },
 });
 
@@ -76,7 +78,6 @@ const sortData = async () => {
 };
 
 export { sortData, topbarData };
-
 
 // const sortDatavt = () => {
 //   var sort = [];

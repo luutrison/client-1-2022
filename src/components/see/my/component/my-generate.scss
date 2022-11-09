@@ -6,7 +6,6 @@ $colorNormal: Mode.$colorNormal;
 $colorDark: Mode.$colorDark;
 //my config
 
-
 @mixin components($point: false) {
   $p: "";
   @if $point != false {
@@ -20,7 +19,7 @@ $colorDark: Mode.$colorDark;
       }
     }
     .#{$name}-col#{$p}-#{$var} {
-      width: calc((100 / $peace) * $var * 1% - calc($defaltCalcUnit* 2));
+      width: calc((100 / $peace) * $var * 1% - calc($defaltCalcUnit * 2));
       padding: $defaltCalcUnit;
     }
 
@@ -35,41 +34,67 @@ $colorDark: Mode.$colorDark;
       $subname: map-get($object, sub);
       $css: map-get($object, css);
 
-      $unitItem: "";
+      $unitItem: null;
+      $unitCount: null;
 
       @if map-has-key($object, unit) {
         $unitItem: map-get($object, unit);
       }
 
-     
-        @if length($css) == 1 {
+      @if map-has-key($object, unitcount) {
+        $unitCount: map-get($object, unitcount);
+      }
+
+      @if length($css) == 1 {
+        @if map-has-key($object, items) {
+          @each $itemObject in map-get($object, items) {
+            .#{$name}-#{$subname}#{$p}-#{$itemObject} {
+              @if map-has-key($object, unitcount) {
+                #{$css}: #{$itemObject}#{$unitCount + $unitItem};
+              } @else {
+                #{$css}: #{$itemObject}#{$unitItem};
+              }
+            }
+          }
+        } @else {
+          .#{$name}-#{$subname}#{$p}-#{$var} {
+            @if map-has-key($object, unitcount) {
+              #{$css}: calc(
+                ($defaultColumnSpace * $var) * calc(#{$unitCount + $unitItem})
+              );
+            } @else {
+              #{$css}: calc(
+                ($defaultColumnSpace * $var) * calc(#{$unitItem})
+              );
+            }
+          }
+        }
+      } @else {
+        @each $cssItem in $css {
           @if map-has-key($object, items) {
             @each $itemObject in map-get($object, items) {
               .#{$name}-#{$subname}#{$p}-#{$itemObject} {
-                #{$css}: #{$itemObject}#{$unitItem};
+                @if map-has-key($object, unitcount) {
+                  #{$cssItem}: #{$itemObject}#{$unitCount +
+                    $unitItem};
+                } @else {
+                  #{$cssItem}: #{$itemObject}#{$unitItem};
+                }
               }
             }
           } @else {
             .#{$name}-#{$subname}#{$p}-#{$var} {
-              #{$css}: calc(($defaultColumnSpace * $var ) * calc(#{$unitItem}));
-            }
-          }
-        } @else {
-          @each $cssItem in $css {
-            @if map-has-key($object, items) {
-              @each $itemObject in map-get($object, items) {
-                .#{$name}-#{$subname}#{$p}-#{$itemObject} {
-                  #{$cssItem}: #{$itemObject}#{$unitItem};
-                }
-              }
-            } @else {
-              .#{$name}-#{$subname}#{$p}-#{$var} {
-                #{$cssItem}: calc(($defaultColumnSpace * $var ) * calc(#{$unitItem}));
+              @if map-has-key($object, unitcount) {
+                #{$cssItem}: calc(($defaultColumnSpace * $var) * calc(#{$unitCount + $unitItem}));
+              } @else {
+                #{$cssItem}: calc(
+                  ($defaultColumnSpace * $var) * calc(#{$unitItem})
+                );
               }
             }
           }
         }
-      
+      }
     }
   }
 }

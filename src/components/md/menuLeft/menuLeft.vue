@@ -3,7 +3,7 @@ import Search from '../../act/search/search.vue';
 
 </script>
 <template>
-    <div :class="mc('menu-left')">
+    <!-- <div :class="mc('menu-left')">
         <Search></Search>
         <div>Vi dien tu</div>
         <div>Mua ban</div>
@@ -18,10 +18,42 @@ import Search from '../../act/search/search.vue';
         <div>Hen ho</div>
         <div>Nha o</div>
         <div>Xe co</div>
+    </div> -->
+
+    <div :class="mc('menu-left')">
+        <div :class="[mc('item'), nc('d-flex jc-space-between w-100')]">
+            <div :class="[nc('skeleton'), mc('skeleton-icon')]"></div>
+            <div :class="[nc('skeleton'), mc('skeleton-title')]"></div>
+        </div>
+
+        <div :class="[mc('item'), nc('d-flex jc-space-between w-100')]">
+            <div :class="[nc('skeleton'), mc('skeleton-icon')]"></div>
+            <div :class="[nc('skeleton'), mc('skeleton-title')]"></div>
+        </div>
+
+        <div :class="[mc('item'), nc('d-flex jc-space-between w-100')]">
+            <div :class="[nc('skeleton'), mc('skeleton-icon')]"></div>
+            <div :class="[nc('skeleton'), mc('skeleton-title')]"></div>
+        </div>
+
+        <div :class="[mc('item'), nc('d-flex jc-space-between w-100')]">
+            <div :class="[nc('skeleton'), mc('skeleton-icon')]"></div>
+            <div :class="[nc('skeleton'), mc('skeleton-title')]"></div>
+        </div>
+
+        <div :class="[mc('item'), nc('d-flex jc-space-between w-100')]">
+            <div :class="[nc('skeleton'), mc('skeleton-icon')]"></div>
+            <div :class="[nc('skeleton'), mc('skeleton-title')]"></div>
+        </div>
+        
     </div>
+   
+    
+
+
 </template>
 <script>
-import { cname } from '~~/src/giaodien/giaodien';
+import { cname, nc } from '~~/src/giaodien/giaodien';
 
 export default {
     data() {
