@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  independencies-client:
+    build: .
+    image: client-1-2022
+    # restart: unless-stopped
+    restart: always
+    # ports: 
+    #   - 3000 : 3000
+    # env_file: .env
+    # environment:
+    # - MONGO_USERNAME=$MONGO_USERNAME
+    # - MONGO_PASSWORD=$MONGO_PASSWORD
+    # - MONGO_HOSTNAME=db
+    # - MONGO_PORT=$MONGO_PORT
+    # - MONGO_DB=$MONGO_DB
+    # volumes:
+    # - .:/home/node/app
+    # - node_modules:/home/node/app/node_modules
+    # networks:
+    # - app-network
+    command: node .deps/server/index.mjs
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+    ports:
+      - 127.1.1.1:3000:3000
+    depends_on:
+      - independencies-client

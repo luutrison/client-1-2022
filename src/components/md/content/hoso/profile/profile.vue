@@ -27,23 +27,23 @@ const data = await profileData.getDataAsync()
                                     Họ và tên:
                                 </div>
                                 <div :class="mc('name')">
-                                    {{data.profile?.name}}
+                                    {{data.profile.name}}
                                 </div>
                             </div>
 
                             <div :class="mc('content-block')">
                                 <div :class="mc('title')">Địa chỉ:</div>
-                                <div>{{data.profile?.commune}}, {{data.profile?.district}}, {{data.profile?.province}}</div>
+                                <div>{{data.profile.commune}}, {{data.profile.district}}, {{data.profile.province}}</div>
                             </div>
 
                             <div :class="mc('content-block')">
                                 <div :class="mc('title')">Email:</div>
-                                <div>{{data.profile?.email}}</div>
+                                <div>{{data.profile.email}}</div>
                             </div>
 
                             <div :class="mc('content-block')">
                                 <div :class="mc('title')">Số điện thoại:</div>
-                                <div>{{data.profile?.phone}}</div>
+                                <div>{{data.profile.phone}}</div>
                             </div>
                         </div>
 
@@ -308,7 +308,6 @@ export default {
         }
     },
     mounted(){
-       console.log(this.data);
     }
 }
 

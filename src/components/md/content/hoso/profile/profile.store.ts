@@ -6,8 +6,6 @@ const profileData = {
     try {
       var data = {};
       const perdata = await getPrivateDataAsync();
-      console.log(perdata);
-
       data["profile"] = perdata;
       return data;
     } catch (error) {
@@ -18,27 +16,28 @@ const profileData = {
 
 const getPrivateDataAsync = async () => {
   try {
-    const postData = {
+    const requestData = {
       profile: "6356576147e428c26e3eaff0",
       // profile: "6356576147e428c26e3eaf23"
     };
+
     const perdata: any = await axios
-      .post(_api_v1("/profile"), postData, {
-        headers: { "Content-Type": "application/json" },
+      .get(_api_v1("/profile"), {
+        headers: {
+          "request-params": JSON.stringify(requestData),
+        },
       })
       .catch((err) => {
         console.error(err);
       });
 
-    console.log(JSON.parse(perdata.data.data), "perdata");
+    const response: any = perdata.data;
 
-    const response = perdata.data;
-
-    if (response.OK === true) {
-      return JSON.parse(perdata.data.data);
+    if (response?.OK === true) {
+      return JSON.parse(response.data);
     } else {
-      console.error(response.message);
-      return {}
+      console.error(response?.message);
+      return {};
     }
   } catch (error) {
     console.error(error);

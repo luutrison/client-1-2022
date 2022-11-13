@@ -89,83 +89,49 @@ const langConfig = reactive({
     }
   },
 
-  init() {
-    return new Promise((resolve, reject) => {
-      //Nay danh sach cac ngon ngu duoc ho tro boi he thong
-      getSupportLanguage()
-        .then((response) => {
-          //Nay ngon ngu ma trinh duyet xac thuc duoc
-          //Neu nguoi dung su dung trinh duyet va trinh duyet ho tro cho xem ngon ngu cua nguoi dung
-          if (typeof navigator !== "undefined" && navigator.languages) {
-            const checkLanguage = checkLang(navigator.languages, response);
-            if (checkLanguage.check) {
-              getLanguageTranlate(checkLanguage.lang).then((response) => {
-                langConfig.message = response;
-
-                resolve(langConfig);
-              });
-            }
-            //Neu khong xac dinh duoc ngon ngu ma trinh duyet tu xac thuc thi de ngon ngu mac dinh
-          }
-        })
-        //Loi khong the khoi tao
-        .catch((error) => {
-          reject(error);
-        });
-    });
+  async init() {
+    const langSupport = await getSupportLanguage();
+    //Nay ngon ngu ma trinh duyet xac thuc duoc
+    //Neu nguoi dung su dung trinh duyet va trinh duyet ho tro cho xem ngon ngu cua nguoi dung
+    if (typeof navigator !== "undefined" && navigator.languages) {
+      const checkLanguage = checkLang(navigator.languages, langSupport);
+      if (checkLanguage.check) {
+        const langTranslate = await getLanguageTranlate(checkLanguage.lang);
+        langConfig.message = langTranslate;
+        return langTranslate;
+      }
+      //Neu khong xac dinh duoc ngon ngu ma trinh duyet tu xac thuc thi de ngon ngu mac dinh
+    }
   },
   sub(code) {
     return langConfig.message[0]?.translate[code];
   },
 });
 
-const getSupportLanguage = () => {
-  return new Promise((resolve, reject) => {
-    axios
-      .get(_api_v1("/language/support"))
-      .then((response) => {
-        try {
-          const langSupport = JSON.parse(response.data as any);
-          if (langSupport.length > 0) {
-            resolve(langSupport);
-          }
-        } catch (error) {
-          console.error(error);
-          reject(error);
-        }
-      })
-      .catch((error) => {
-        notification.open({
-          message: "Error",
-          description: error.response.statusText,
-          ...(_notifier.error as any),
-        });
-      });
-  });
+const getSupportLanguage = async () => {
+  const resData = await useAsyncData(() =>
+    $fetch(_api_v1("/language/support"))
+  );
+  try {
+    const langSupport = JSON.parse(resData.data.value as any);
+    if (langSupport.length > 0) {
+      return langSupport;
+    }
+  } catch (error) {
+    console.error(error);
+  }
 };
 
-const getLanguageTranlate = (language) => {
-  return new Promise((resolve, reject) => {
-    axios
-      .get(_api_v1("/language/init/" + language))
-      .then((response) => {
-        try {
-          const langPack = JSON.parse(response.data as any);
-          resolve(langPack);
-        } catch (error) {
-          console.error(error);
-          reject({});
-        }
-      })
-      //lay du lieu loi
-      .catch((error) => {
-        notification.open({
-          message: "Error",
-          description: error.response.statusText,
-          ...(_notifier.error as any),
-        });
-      });
-  });
+const getLanguageTranlate = async (language) => {
+  const resData = await useAsyncData(() =>
+    $fetch(_api_v1("/language/init/" + language))
+  );
+  try {
+    const langPack = JSON.parse(resData.data.value as any);
+    return langPack;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export { langConfig };

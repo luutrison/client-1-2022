@@ -1,14 +1,22 @@
+<script setup>
+useHead({
+    title: "Hồ sơ"
+})
+</script>
+
+
 <template>
     <Profile></Profile>
 </template>
 
 <script>
 import Profile from '~~/src/components/md/content/hoso/profile/profile.vue';
+
 export default {
     inject: {
         giaodien: "giaodien"
     },
-    beforeMount(){
+    beforeMount() {
         this.giaodien.bocuc.setLayout("md")
     },
     components: { Profile }

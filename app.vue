@@ -25,18 +25,20 @@ export default {
   provide() {
     return {
       giaodien: _giaodien(this.giaodien)
+
     }
 
     // https_1.default.createServer(options, app).listen(443, () => {
     //   console.log(port + "...." + address)
     // });
+  },
+  mounted(){
   }
 
 };
 </script>
 
 
-
-<style>
-
+<style lang="scss">
+@import "@/src/giaodien/modes/mode-normal.scss";
 </style>

@@ -28,7 +28,6 @@ const classCustom: ICssType<ICssDeclare> = {
 };
 
 import { icssTranslate } from "./icssTranslate";
-import config from "../underscore.config";
 
 function Random(length) {
   var result = "";

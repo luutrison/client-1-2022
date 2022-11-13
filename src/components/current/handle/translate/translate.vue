@@ -1,23 +1,15 @@
 <template>
-<slot></slot>
+    <slot></slot>
 </template>
 
 
 <script>
-import {langConfig} from '@/src/module/underscore/translate/translate'
+import { langConfig } from '@/src/module/underscore/translate/translate'
 export default {
-    setup(){
+    setup() {
         langConfig.init()
     },
-    data(){
-        return {
-            langConfig
-        }
-    },
-    provide() {
-        return{
-            translate: langConfig
-        }
+    data() {
     },
 
 }

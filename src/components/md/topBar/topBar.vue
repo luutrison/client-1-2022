@@ -5,9 +5,9 @@
             <MenuTopBar></MenuTopBar>
         </div>
         <div :class="mc('right-topbar')">
-            <NuxtLink to="/account/login">
+            <!-- <NuxtLink to="/account/login">
                 <button>account</button>
-            </NuxtLink>
+            </NuxtLink> -->
         </div>
     </div>
 

@@ -29,8 +29,3 @@ import SimpleContainer from '../src/components/md/container/simple-container.vue
 export default {
 }
 </script>
-
-
-<style lang="scss">
-@import "@/src/giaodien/modes/mode-normal.scss";
-</style>

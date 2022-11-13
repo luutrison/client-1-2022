@@ -6,47 +6,27 @@ import _notifier from "../../../../../../src/components/current/ui/notifier/noti
 
 const topbarData = reactive({
   data: [],
-  getThemeData() {
-    return new Promise((resolve, reject) => {
-      axios
-        .get(_api_v1("/giaodien"))
-        .then((response) => {
-          try {
-            const keyname = "pinned_topbar";
+  async getThemeData() {
 
-            const resData = JSON.parse(response.data);
+    const rdata = await useAsyncData(() => $fetch(_api_v1("/giaodien")))
+    const keyname = "pinned_topbar";
+    const resData = JSON.parse(rdata.data.value as any);
 
-            if (resData) {
-              const topbar = resData.find((x) => x.name === keyname);
-
-              const items = topbar.items.sort((a, b) => {
-                if (a.order < b.order) {
-                  return -1;
-                } else {
-                  return 1;
-                }
-              });
-              this.data = items;
-              resolve(this.data);
-            }
-          } catch (error) {
-            reject(error);
-            // notification.open({
-            //   message: "Error",
-            //   description: error,
-            //   ...(_notifier.error as any),
-            // });
-          }
-        })
-        .catch((error) => {
-          notification.open({
-            message: "Error",
-            description: error,
-            ...(_notifier.error as any),
-          });
-          // reject(false)
-        });
-    });
+    if (resData) {
+      const topbar = resData.find((x) => x.name === keyname);
+      const items = topbar.items.sort((a, b) => {
+        if (a.order < b.order) {
+          return -1;
+        } else {
+          return 1;
+        }
+      });
+      this.data = items;
+      return items
+    }
+    else{
+      return undefined;
+    }
   },
 });
 
